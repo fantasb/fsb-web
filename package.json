@@ -1,0 +1,19 @@
+{
+	"name": "fsb-web",
+	"private": true,
+	"description": "dont publish me :)",
+	"author": "alec",
+	"dependencies": {
+		"minimist": "1.1.1",
+		"sext": "0.1.6",
+		"express": "4.13.4",
+		"react": "0.14.7"
+	},
+	"devDependencies": {
+		"react-tools": "0.13.3",
+		"tape": "~4.0.0"
+	},
+	"scripts": {
+		"test": "node test/test.js"
+	}
+}
