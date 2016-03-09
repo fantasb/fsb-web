@@ -10,7 +10,9 @@
 		"minimist": "1.1.1",
 		"react": "0.14.7",
 		"react-dom": "0.14.7",
-		"sext": "0.1.6"
+		"replify": "~1.1.4",
+		"sext": "0.1.6",
+		"underscore": "1.4.3"
 	},
 	"devDependencies": {
 		"react-tools": "0.13.3",
