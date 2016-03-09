@@ -5,15 +5,15 @@ var _ = require('underscore')
 ,express = require('express')
 ,http = require('http')
 ,https = require('https')
-,winston = require('./winston')
+,winston = require('./winston.js')
 ,fs = require('fs')
 ,path = require('path')
 ,vhost = require('./vhost.js')
-//,exec = require('child_process').exec
-//,async = require('async')
-//,pkg = require(process.cwd()+'/package.json')
-//,gulp = require('./gulp.js')
-//,flush = require('./flush.js')
+,exec = require('child_process').exec
+,async = require('async')
+,pkg = require(process.cwd()+'/package.json')
+,gulp = require('./gulp.js')
+,flush = require('./flush.js')
 //,require('./backend-helpers.js')
 ;
 
@@ -38,6 +38,28 @@ app.configure(function(){
 	app.set('views', path.join(process.cwd(),'views'));
 	app.set('routesConfig', routesConfig);
 	app.set('config', config);
+});
+
+
+// --------------------------------------------------------------
+//  @note: The app is started for the system-ctrl tests and we don't
+//         need the front end code to compile at this time.
+// --------------------------------------------------------------
+if (process.env.NODE_ENV != 'test') gulp();
+
+
+// --------------------------------------------------------------
+//  Figure out what version of the code we're running
+// --------------------------------------------------------------
+async.parallel({
+	tag: async.apply(exec,'git describe --tags')
+	,hash: async.apply(exec,'git rev-parse HEAD')
+	,branch: async.apply(exec,'git rev-parse --abbrev-ref HEAD')
+}),function(err,results){
+	_.each(results,function(v,k){
+		app.set('git-'+k, (v[0]||'').replace(/\n/g,'; '));
+	});
+	app.emit('initialized');
 });
 
 
