@@ -1,0 +1,42 @@
+{
+	"http": {
+		"port": 3000
+	},
+	"https": false,
+	"workerTimeout": 5000,
+	"socketTimeout": 30000,
+	"toobusyMaxLag": 1000,
+	"cmsTtl": 900000,
+
+	"api": {
+		"app": "",
+		"secret": "",
+		"endpoint": "",
+		"version": ""
+	},
+	"facebook": {
+	},
+	"twitter": {
+	},
+	"aws": {
+		"accessKeyId": "",
+		"secretAccessKey": "",
+		"region": "us-east-1"
+	},
+	"logging": {
+		"loggly": {
+			"subdomain": "",
+			"inputToken": ""
+		}
+	},
+	"cdn": {
+		"defaultRouteTtl": 0,
+		"errorTtl": 10
+	},
+	"pagemetatags": {
+		"default": [
+			{"property":"og:site_name", "content":"FantasB"},
+			{"name":"google-site-verification", "content":""}
+		]
+	}
+}

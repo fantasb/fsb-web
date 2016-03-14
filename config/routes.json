@@ -1,0 +1,14 @@
+[
+
+  {
+    "key": "home",
+    "path": "/",
+    "controller": "home-ctrl",
+    "action": "index",
+    "template": "home/home-page",
+    "scripts": [
+      "main-homepage"
+    ]
+  }
+
+]

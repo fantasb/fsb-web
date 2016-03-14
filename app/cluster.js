@@ -1,5 +1,6 @@
 var cluster = require('cluster')
 ,os = require('os')
+,_ = require('underscore')
 ,winston = require('./winston.js')
 ,config = require ('../config.js')
 ;
@@ -7,7 +8,7 @@ var cluster = require('cluster')
 if (cluster.isMaster) {
 	var timeout = {};
 
-	timeout.wait = config.get('worker-timeout') || 5000;
+	timeout.wait = config.workerTimeout || 5000;
 
 	// Emitted when a new worker is created
 	cluster.on('fork', function(worker){

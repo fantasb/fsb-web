@@ -14,7 +14,6 @@ var _ = require('underscore')
 ,pkg = require(process.cwd()+'/package.json')
 ,gulp = require('./gulp.js')
 ,flush = require('./flush.js')
-//,require('./backend-helpers.js')
 ;
 
 
@@ -22,7 +21,7 @@ var _ = require('underscore')
 //  configs
 // --------------------------------------------------------------
 var config = require('../config.js')
-,routesConfig = require(process.cwd()+'/config/routes.json')
+,routesConfig = require('../config/routes.json')
 ;
 
 
@@ -45,7 +44,9 @@ app.configure(function(){
 //  @note: The app is started for the system-ctrl tests and we don't
 //         need the front end code to compile at this time.
 // --------------------------------------------------------------
-if (process.env.NODE_ENV != 'test') gulp();
+if (process.env.NODE_ENV != 'test') {
+	gulp();
+}
 
 
 // --------------------------------------------------------------
@@ -55,7 +56,7 @@ async.parallel({
 	tag: async.apply(exec,'git describe --tags')
 	,hash: async.apply(exec,'git rev-parse HEAD')
 	,branch: async.apply(exec,'git rev-parse --abbrev-ref HEAD')
-}),function(err,results){
+},function(err,results){
 	_.each(results,function(v,k){
 		app.set('git-'+k, (v[0]||'').replace(/\n/g,'; '));
 	});
@@ -78,14 +79,15 @@ process.on('SIGINT', function(){
 });
 
 app.get('/id', function(req, res, next){
-	app.disable ('etag'); // disable caching by cdn like cloudfront
+	app.disable('etag'); // disable caching by cdn like cloudfront
 	var config = req.app.get('config');
 	res.send({
 		commit: app.get('git-hash') || null
 		,tag: app.get('git-tag') || null
 		,branch: app.get('git-branch') || null
-		,api: config.get('api.endpoint') || null
-		,dependencies: pkg.dependencies || null
+		,api: config.api.endpoint || null
+		//,dependencies: pkg.dependencies || null
+		,appVersion: pkg.version || null
 	});
 });
 
@@ -95,7 +97,7 @@ app.get('/id', function(req, res, next){
 // --------------------------------------------------------------
 // for now just the one
 vhost.create(app, 'fsb', {});
-/*
+/* if spooling up more than one vhost, may need to `app = express()` + transfer configure inside vhost
 _.each(config.vhosts,function(vhostOpts,key){
 	vhost.create(app, key, vhostOpts);
 });
@@ -127,7 +129,7 @@ app.on('initialized', function(){
 
 		if (type == 'http') {
 			var server = http.createServer(app);
-		} else if type == 'https') {
+		} else if (type == 'https') {
 			var server = https.createServer(settings, app);
 		} else {
 			throw new Error('Invalid protocol type');
@@ -143,17 +145,19 @@ app.on('initialized', function(){
 			}
 		});
 		return server;
-	});
+	}
 
 	function configure(type){
-		var settings = config.get(type);
+		var settings = config[type];
 		if (type == 'http') {
 			settings.port = app.get('port');
 		}
 		if (app.get('env') == 'development') {
 			process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 		}
-		if (settings) boot(type,settings);
+		if (settings) {
+			boot(type,settings);
+		}
 	}
 
 	function exists(thing){
@@ -187,9 +191,9 @@ module.exports = app;
 
 var cluster = require('cluster');
 if (cluster.isWorker) {
-	require('./repl')(cluster.worker.workerID);
+	require('./repl.js')(cluster.worker.workerID);
 } else {
-	require('./repl')('');
+	require('./repl.js')('');
 }
 
 
