@@ -94,7 +94,7 @@ app.get('/id', function(req, res, next){
 // --------------------------------------------------------------
 // for now just the one
 vhost.create(app, 'fsb', {});
-/* if spooling up more than one vhost, may need to `app = express()` + transfer configure inside vhost
+/*
 _.each(config.vhosts,function(vhostOpts,key){
 	vhost.create(app, key, vhostOpts);
 });

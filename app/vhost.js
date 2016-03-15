@@ -5,7 +5,7 @@ var _ = require('underscore')
 ,Url = require('url')
 ,winston = require('winston')
 ,toobusy = require('toobusy')
-//,Domain = require('domain')
+,Domain = require('domain')
 //,crisper = require('data-crisper')
 
 var util = require('./helpers/util.js')
@@ -61,10 +61,9 @@ exports.create = function(platform, appName, opts){
 		// END performance: once-per-request
 
 		// wrap request in domain
-		// let server.js handle this
-		//domain = Domain.create();
-		//domain.on('error', next);
-		//domain.run(next);
+		var domain = Domain.create();
+		domain.on('error', next); // Let express error middleware handle async errors
+		domain.run(next);
 	});
 	// END Headers and Helpers
 
@@ -107,7 +106,7 @@ exports.create = function(platform, appName, opts){
 
 	app.use(cacheHeaders(2592000,true)); // Cache everything below this for a month
 	app.use('/compiled', cacheHeaders(2592000,true)); // Cache compiled assets for a month, but verify
-	app.use(express.favicon(platform.get('public')+'/images/favicon.ico'));
+	//app.use(express.favicon(platform.get('public')+'/images/favicon.ico')); // @todo: make a favico
 	app.use(express['static'](platform.get('public')));
 
 

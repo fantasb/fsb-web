@@ -5,12 +5,18 @@ var fs = require('fs')
 ,util = require('../helpers/util.js')
 ,helpers = require('./helpers.js')(_, util) // @todo: refactor how helpers get access to util.js
 ,Handlebars = require('handlebars')
+,bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; } // @todo: turn into a helper module if going to use again
 ;
 
 function HBS(){
 	var z = this;
 	z.handlebars = Handlebars.create();
 	z.cache = {};
+
+	// Ensure these methods are called with correct `this`
+	z.__express = bind(z.__express, z);
+	z.registerPartial = bind(z.registerPartial, z);
+	z.registerHelper = bind(z.registerHelper, z);
 
 	// Register hbs helper methods
 	_.each(helpers,function(fn,name){
@@ -44,7 +50,7 @@ HBS.prototype.loadPartialsDirectory = function(dir,partials){
 }
 
 HBS.prototype.loadPartials = function(app){
-	var z = this
+	var z = this;
 	var partials = z.loadPartialsDirectory(path.join(app.get('app path'),'views'));
 	//if (app.get('app root')) partials = z.loadPartialsDirectory(path.join(app.get('app root'),'shared/views'), partials);
 	_.each(partials,function(key,data){

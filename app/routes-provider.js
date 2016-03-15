@@ -133,7 +133,6 @@ Routes.prototype.mapRoutesToControllers = function(controllers, routes){
 		;
 
 		callbacks.push(function(req,res,next){
-console.log('WEFEWFEWFEWFEWFEWFEWFEWFEWFEWFWEFWEFWEF!!!!!');
 			res.locals.page = key;
 			if (route.pageData) res.locals.pageData = route.pageData;
 			if (route.scripts) res.locals.scripts = route.scripts;
@@ -197,9 +196,7 @@ console.log('WEFEWFEWFEWFEWFEWFEWFEWFEWFEWFWEFWEFWEF!!!!!');
 			} else {
 				throw new Error('Callback not found for '+route.controller + '/'+ route.action);
 			}
-			callbacks.forEach(function(f){
-				console.log(f.toString());
-			});
+			//callbacks.forEach(function(f){ console.log(f.toString()); });
 			z.app[method](routePath,callbacks);
 		}
 	});
