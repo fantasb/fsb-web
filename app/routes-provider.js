@@ -11,6 +11,8 @@ var _ = require('underscore')
 var routesMiddleware = null;
 
 function Routes(app, config, routesConfig, cacheHeaders){
+	// @todo: Stop passing stuff like config + cacheHeaders as refs;
+	// 	these can simply be require()ed. Can pass overrides for tests
 	var z = this;
 	z.app = app;
 	z.config = config;
@@ -23,7 +25,8 @@ Routes.prototype.init = function(){
 	var z = this;
 	routesMiddleware = require('./middleware/routes-middleware.js')(z.app,z.config);
 
-	// @todo: delete this once sure dont need it in BaseController
+	// @todo: delete this once sure dont need it in BaseController; would be better to be a singleton helper imho
+	//	If end up using this, or making a helper, expose a route in server.js to flush cache
 	//z.cache = Cache({
 	//	max: 1000
 	//	,maxAge: z.config.cmsTtl || 0
@@ -38,14 +41,14 @@ Routes.prototype.init = function(){
 		,cacheLifetime: z.config.cdn.defaultRouteTtl || 0
 	};
 
-	if (app) { // optional for tests
-		var controllers = z.loadControllersFromDirectory(path.join(app.get('app path'),'controllers'));
+	if (z.app) { // optional for tests
+		var controllers = z.loadControllersFromDirectory(path.join(z.app.get('app path'),'controllers'));
 		z.mapRoutesToControllers(controllers);
 	}
 
 }
 
-Routes.prototype.getCallback = function(obj,parts){
+/*Routes.prototype.getCallback = function(obj,parts){
 	for (var i=0,c=parts.length; i<c; ++i) {
 		obj = obj[parts[i]];
 		if (!obj) {
@@ -53,7 +56,7 @@ Routes.prototype.getCallback = function(obj,parts){
 		}
 	}
 	return obj;
-}
+}*/
 
 Routes.prototype.redirectToProtocol = function(protocol){
 	return function(req,res,next){
@@ -103,7 +106,8 @@ Routes.prototype.loadControllersFromDirectory = function(dir, routers){
 				if (!routers.hasOwnProperty(fileBaseName)) {
 					// initialize controller and pass dependencies
 					console.log(' --- ', path.join(dir,fileBaseName));
-					var routeController = require(path.join(dir, fileBaseName))(z.config); // @todo: Get rid cache/Handlebars arg + require above unless causes problems with dep order
+					//var routeController = require(path.join(dir, fileBaseName))(z.config); // @todo: Get rid cache/Handlebars arg + require above unless causes problems with dep order
+					var routeController = require(path.join(dir, fileBaseName));
 					routers[fileBaseName] = routeController;
 				}
 			} else {
@@ -122,12 +126,14 @@ Routes.prototype.mapRoutesToControllers = function(controllers, routes){
 	_.each(routes, function(route, index){
 		route = sext(true, {}, z.routeDefaults, route);
 		var key = route.key
-			,callback = z.getCallback(controllers, [route.controller,route.action])
+			//,callback = z.getCallback(controllers, [route.controller,route.action])
+			,callback = controllers[route.controller] && controllers[route.controller][route.action]
 			,method = route.method.toLowerCase()
 			,callbacks = []
 		;
 
 		callbacks.push(function(req,res,next){
+console.log('WEFEWFEWFEWFEWFEWFEWFEWFEWFEWFWEFWEFWEF!!!!!');
 			res.locals.page = key;
 			if (route.pageData) res.locals.pageData = route.pageData;
 			if (route.scripts) res.locals.scripts = route.scripts;
@@ -158,8 +164,7 @@ Routes.prototype.mapRoutesToControllers = function(controllers, routes){
 
 			// Match the route coming in
 			var routePath = route.regex ? new RegExp(route.regex) : route.path;
-			console.log('route.path',route.path);
-			//console.log('route.callback',callback);
+			console.log('routePath',routePath,callback?'found controller method':'no controller method found');
 
 			if (callback) {
 				var config = z.app.get('config');
@@ -176,7 +181,7 @@ Routes.prototype.mapRoutesToControllers = function(controllers, routes){
 				}
 
 				// always try to set cache headers
-				callbacks.push(cacheHeaders(route.cacheLifetime));
+				callbacks.push(z.cacheHeaders(route.cacheLifetime));
 
 				// provide a serialized config model to the templates
 				//callbacks.push(function(req,res,next){
@@ -185,15 +190,17 @@ Routes.prototype.mapRoutesToControllers = function(controllers, routes){
 				//});
 
 				callbacks.push(callback);
-				z.app[method](routePath,callbacks);
 			} else if (route.redirect) {
 				callbacks.push(function(req,res,next){
 					res.redirect(route.redirect);
 				});
-				z.app[method](routePath,callbacks);
 			} else {
 				throw new Error('Callback not found for '+route.controller + '/'+ route.action);
 			}
+			callbacks.forEach(function(f){
+				console.log(f.toString());
+			});
+			z.app[method](routePath,callbacks);
 		}
 	});
 }

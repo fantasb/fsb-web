@@ -10,7 +10,7 @@ var _ = require('underscore')
 
 var util = require('./helpers/util.js')
 ,config = require('../config.js')
-,waiter = require('./helpers/waiter.js')
+//,waiter = require('./helpers/waiter.js') // @todo: deprecate
 ,tracking = require('./helpers/tracking.js')
 ,errorHandler = require('./middleware/error.js')
 ,keepalive = require('./middleware/keepalive.js')
@@ -42,7 +42,7 @@ exports.create = function(platform, appName, opts){
 	// END Transfer configure() from platform to app instance
 
 	// hack so utils.js can use app.locals without passed ref
-	waiter.set('app',app);
+	//waiter.set('app',app); // @todo: deprecate
 
 	hbs.loadPartials(app);
 
@@ -107,8 +107,8 @@ exports.create = function(platform, appName, opts){
 
 	app.use(cacheHeaders(2592000,true)); // Cache everything below this for a month
 	app.use('/compiled', cacheHeaders(2592000,true)); // Cache compiled assets for a month, but verify
-	app.use(express.favicon(app.get('public')+'/images/favicon.ico'));
-	app.use(express['static'](app.get('public')));
+	app.use(express.favicon(platform.get('public')+'/images/favicon.ico'));
+	app.use(express['static'](platform.get('public')));
 
 
 	// BEGIN Global View Data
@@ -172,7 +172,7 @@ exports.create = function(platform, appName, opts){
 
 	// BEGIN Attach routes, start server
 	app.use(app.router);
-	new Routes(app, config, app.get('routesConfig'), cacheHeaders); // @todo: refactor unnecessary OOness here?
+	new Routes(app, config, platform.get('routesConfig'), cacheHeaders); // @todo: refactor unnecessary OOness here?
 	// END Attach routes, start server
 
 
@@ -200,7 +200,7 @@ exports.create = function(platform, appName, opts){
 		throw new Error('Please add a vhost to your default config at minimum');
 	}
 
-	platform.use(express.vhost(config.vhost), app);
+	platform.use(express.vhost(config.vhost, app));
 	winston.log('debug', 'vhost attached', {vhost: config.vhost});
 
 }

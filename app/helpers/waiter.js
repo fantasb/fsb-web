@@ -1,5 +1,6 @@
 // share stuff
 // note: this is an anti-pattern, don't use unless have to
+// @todo: deprecate cuz this forces bad habits
 //
 
 var data = {};

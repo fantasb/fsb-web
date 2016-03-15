@@ -1,1 +1,29 @@
 # fsb-web
+
+
+
+### Upgrading Express to 4.x
+[Refactor Routes For Scalingz](https://www.reddit.com/r/node/comments/2c3psn/expressjs_v3_or_v4_as_a_good_starting_point/)
+
+
+
+### To Do
+- Debug current routing situation
+- Configure winston to use `log/`
+- Refactor handlebars/index.js pathToTry stuff
+	- Make sure is trying the correct spot first and remove backup attempt
+- Deprecate bower if not using
+	- package.json / bower.json / etc
+- Finish metatags middleware refactor
+	- Old method overcomplicated
+- Refactor `app/cache.js` as helper
+	- If needed at all. Might be best to remove from code completely and one-off
+- Refactor handlebars/helpers.js to stop passing args as refs and just return the helpers
+- Deprecate `app/helpers/waiter.js` - is an antipattern
+- Streamline `routes-provider.js`
+	- See "@todo"s in file
+- Refactor routing (use Express 4.x)
+- Finish translating useful helpers
+- Implement React to replace Handlebars
+	- Not in v0 in case pressed for time and stuck with proto for awhile; would need to render React views server side for SEO
+

@@ -3,7 +3,7 @@
   {
     "key": "home",
     "path": "/",
-    "controller": "home-ctrl",
+    "controller": "home",
     "action": "index",
     "template": "home/home-page",
     "scripts": [

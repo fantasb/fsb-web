@@ -13,7 +13,7 @@ var _ = require('underscore')
 ,async = require('async')
 ,pkg = require(process.cwd()+'/package.json')
 ,gulp = require('./gulp.js')
-,flush = require('./flush.js')
+//,flush = require('./flush.js') // @todo: Expose route to flush app/cache.js if ends up being used
 ;
 
 
@@ -29,20 +29,17 @@ var config = require('../config.js')
 //  app config
 // --------------------------------------------------------------
 var app = express();
-app.configure(function(){
-	app.set('port', process.env.PORT || +config.http.port || 3000);
-	app.set('app root', process.cwd());
-	app.set('path', process.cwd() + '/app');
-	app.set('public', process.cwd() + '/public');
-	app.set('views', path.join(process.cwd(),'views'));
-	app.set('routesConfig', routesConfig);
-	app.set('config', config);
-});
+app.set('port', process.env.PORT || +config.http.port || 3000);
+app.set('app root', process.cwd());
+app.set('path', process.cwd() + '/app');
+app.set('public', process.cwd() + '/public');
+app.set('views', path.join(process.cwd(),'views'));
+app.set('routesConfig', routesConfig);
+app.set('config', config);
 
 
 // --------------------------------------------------------------
-//  @note: The app is started for the system-ctrl tests and we don't
-//         need the front end code to compile at this time.
+//  We don't need the front end code to compile at this time
 // --------------------------------------------------------------
 if (process.env.NODE_ENV != 'test') {
 	gulp();

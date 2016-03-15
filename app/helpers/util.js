@@ -1,7 +1,8 @@
 
 var _ = require('underscore')
 ,querystring = require('querystring')
-,waiter = require('./waiter.js')
+//,waiter = require('./waiter.js')
+,config = require('../../config.js')
 ;
 
 module.exports = {
@@ -167,9 +168,12 @@ module.exports = {
 		// simple == safe: only absolutify if first character is '/' and second char is not '/'
 		if (url && typeof url == 'string') {
 			if (url[0] == '/' && url[1] != '/') {
-				var app = waiter.get('app');
-				if (app && app.locals && app.locals.fullDomain) { // @todo: implement this in vhost.js
-					url = 'http://'+app.locals.fullDomain+url;
+				//var app = waiter.get('app');
+				//if (app && app.locals && app.locals.fullDomain) { // @todo: implement this in vhost.js
+				//	url = 'http://'+app.locals.fullDomain+url;
+				//}
+				if (config.fullDomain) {
+					url = 'http://'+config.fullDomain+url;
 				}
 			}
 			if (forceHttps) {

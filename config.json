@@ -3,6 +3,8 @@
 		"port": 3000
 	},
 	"https": false,
+	"fullDomain": "www.fsb.com",
+	"vhost": "*.com",
 	"workerTimeout": 5000,
 	"socketTimeout": 30000,
 	"toobusyMaxLag": 1000,
