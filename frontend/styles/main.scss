@@ -1,0 +1,50 @@
+
+@import "bourbon";
+@import "variables/colors.scss";
+@import "settings";
+@import "foundation";
+@import "variables/fonts.scss";
+@import "mixins/helpers.scss";
+@import "mixins/fonts.scss";
+
+
+// $include-html-top-bar-classes: true;
+$font-weight-normal: normal;
+$thumb-height: 10rem;
+$hidden_pos: -99999px;
+$mobile-menu-header-height: 3.5rem;
+$mobile-menu-line-height: rem-calc(47);//3.5rem;
+
+
+/*--------------------------------
+
+  BASE STYLES (may or may not be on ever page - might be extended)
+
+----------------------------------*/
+@import "typography.scss";
+//@import "overrides.scss";
+@import "base.scss";
+
+/*--------------------------------
+
+  CORE STYLES (included on every page)
+
+----------------------------------*/
+//@import "customer-bar.scss";
+//@import "modals.scss";
+//@import "dropdowns.scss";
+//@import "cart.scss";
+//@import "supernav.scss";
+
+/*--------------------------------
+
+  PAGE SPECIFIC (layout)
+
+----------------------------------*/
+//@import "article.scss";
+//@import "editor-bio.scss";
+
+
+//@import "common.scss";
+
+

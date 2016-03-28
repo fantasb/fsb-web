@@ -1,0 +1,65 @@
+// from h1 element settings in foundation. Tried an @extend but it didnt work out.
+.h1 {
+  text-rendering: optimizeLegibility;
+  margin-top: 0;
+  margin-bottom: 0.9375rem;
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 { line-height: 100%; }
+
+h1, h2, .h1, .h2, {
+  text-transform: uppercase;
+  color: $black;
+}
+
+h3, h4, .h3, .h4 {
+	text-transform: capitalize;
+	color: $black;
+}
+
+h1, .h1 {
+  @extend .font-roboto-thin;
+  font-size: $h1-font-size;
+}
+
+h2, .h2 {
+  @extend .font-roboto-bold;
+  font-size: $h2-font-size;
+}
+
+h3, .h3 {
+  @extend .font-roboto-bold;
+  font-size: $h3-font-size;
+}
+
+h4, .h4 {
+  @extend .font-roboto-bold;
+  font-size: $h4-font-size;
+}
+
+h5, .h5 {
+  @extend .font-roboto-medium;
+  text-transform: uppercase;
+  margin-bottom: rem-calc(7);
+  font-size: $h5-font-size;
+}
+
+h6, .h6 {
+  @extend .font-roboto-regular;
+  margin-bottom: rem-calc(6);
+  font-size: $h6-font-size;
+}
+
+@media #{$small-only} {
+  h1, .h1 { font-size: rem-calc(18); }
+  h2, .h2 { font-size: rem-calc(17); }
+  h3, .h3 { font-size: rem-calc(16); }
+  h4, .h4 { font-size: rem-calc(15); }
+  h5, .h5 { font-size: rem-calc(14); }
+  h6, .h6 { font-size: rem-calc(13); }
+}

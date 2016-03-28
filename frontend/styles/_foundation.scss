@@ -1,0 +1,45 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+// Make sure the charset is set appropriately
+@charset "UTF-8";
+
+// Behold, here are all the Foundation components.
+@import
+  "../../public/libs/foundation/scss/foundation/components/grid",
+  "../../public/libs/foundation/scss/foundation/components/accordion",
+  "../../public/libs/foundation/scss/foundation/components/block-grid",
+  "../../public/libs/foundation/scss/foundation/components/breadcrumbs",
+  "../../public/libs/foundation/scss/foundation/components/button-groups",
+  "../../public/libs/foundation/scss/foundation/components/buttons",
+  "../../public/libs/foundation/scss/foundation/components/clearing",
+  "../../public/libs/foundation/scss/foundation/components/dropdown-buttons",
+  "../../public/libs/foundation/scss/foundation/components/flex-video",
+  "../../public/libs/foundation/scss/foundation/components/forms",
+  "../../public/libs/foundation/scss/foundation/components/keystrokes",
+  "../../public/libs/foundation/scss/foundation/components/labels",
+  "../../public/libs/foundation/scss/foundation/components/panels",
+  "../../public/libs/foundation/scss/foundation/components/tables",
+  "../../public/libs/foundation/scss/foundation/components/thumbs",
+  "../../public/libs/foundation/scss/foundation/components/tooltips",
+  "../../public/libs/foundation/scss/foundation/components/type",
+  "../../public/libs/foundation/scss/foundation/components/orbit",
+  // "../../public/libs/foundation/scss/foundation/components/dropdown",
+  "../../public/libs/foundation/scss/foundation/components/alert-boxes",
+  // "../../public/libs/foundation/scss/foundation/components/inline-lists",
+  // "../../public/libs/foundation/scss/foundation/components/top-bar",
+  // "../../public/libs/foundation/scss/foundation/components/joyride",
+  // "../../public/libs/foundation/scss/foundation/components/magellan",
+  // "../../public/libs/foundation/scss/foundation/components/pagination",
+  // "../../public/libs/foundation/scss/foundation/components/pricing-tables",
+  // "../../public/libs/foundation/scss/foundation/components/progress-bars",
+  // "../../public/libs/foundation/scss/foundation/components/range-slider",
+  // "../../public/libs/foundation/scss/foundation/components/reveal",
+  // "../../public/libs/foundation/scss/foundation/components/side-nav",
+  // "../../public/libs/foundation/scss/foundation/components/split-buttons",
+  // "../../public/libs/foundation/scss/foundation/components/sub-nav",
+  // "../../public/libs/foundation/scss/foundation/components/switch",
+  // "../../public/libs/foundation/scss/foundation/components/tabs",
+  // "../../public/libs/foundation/scss/foundation/components/offcanvas",
+  "../../public/libs/foundation/scss/foundation/components/visibility";

@@ -40,7 +40,7 @@ HBS.prototype.loadPartialsDirectory = function(dir,partials){
 					if (f.indexOf('_') == 0) {
 						name = name.substr(1);
 					}
-					console.log('name: ',name);
+					console.log('name: ',name, 'key:',keyRoute+name);
 					partials[keyRoute+name] = fs.readFileSync(path.join(dir,route,f),'utf8');
 				}
 			});
@@ -51,9 +51,11 @@ HBS.prototype.loadPartialsDirectory = function(dir,partials){
 
 HBS.prototype.loadPartials = function(app){
 	var z = this;
+	// backend-only partials...
 	var partials = z.loadPartialsDirectory(path.join(app.get('app path'),'views'));
-	//if (app.get('app root')) partials = z.loadPartialsDirectory(path.join(app.get('app root'),'shared/views'), partials);
-	_.each(partials,function(key,data){
+	// shared partials...
+	if (app.get('app root')) partials = z.loadPartialsDirectory(path.join(app.get('app root'),'shared/views'), partials);
+	_.each(partials,function(data,key){
 		z.registerPartial(key,data);
 	});
 }

@@ -1,0 +1,9 @@
+{{!-- <script src="//ajax.googleapis.com/ajax/libs/webfont/1.3.0/webfont.js"></script> --}}
+
+{{! @note: IE9 should load the [name]-blessed.css version of the file to avoid issues with IE9 css limits. }}
+<!--[if IE 9]>
+<link rel="stylesheet" href="{{cdnCssUrl}}/compiled/{{#if soloStyleSheet}}solo-{{soloStyleSheet}}-blessed{{else}}main-blessed{{/if}}.css?v={{pkgVersion}}"/>
+<![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<link rel="stylesheet" href="{{cdnCssUrl}}/compiled/{{#if soloStyleSheet}}solo-{{soloStyleSheet}}{{else}}main{{/if}}.css?v={{pkgVersion}}"/>
+<!--<![endif]-->

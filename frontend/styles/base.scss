@@ -1,0 +1,21 @@
+
+/*--------------------------------
+
+  base
+
+----------------------------------*/
+
+html, body {
+  width: 100%;
+}
+div.clear {
+  clear: both;
+  width: auto;
+  height: 0;
+  overflow: hidden;
+}
+input::-webkit-input-placeholder {color:#999; font-style:italic; text-transform:none !important;}
+input:-moz-placeholder {color:#999; font-style:italic; text-transform:none !important;}
+input::-moz-placeholder {color:#999; font-style:italic; text-transform:none !important;}
+input:-ms-input-placeholder {color:#999; font-style:italic; text-transform:none !important;}
+

@@ -20,7 +20,8 @@ module.exports = function(opTask, cb){
 	// Using dev-nocss for test env
 	var gulpTask = process.env.GULP_TASK; // mostly to support the dev-ie task so css is blessed when developing for ie9
 	var task = opTask || gulpTask ||
-		((env == 'development' || env == 'test') ? 'dev-nocss' : 'default');
+		//((env == 'development' || env == 'test') ? 'dev-nocss' : 'default');
+		((env == 'development' || env == 'test') ? 'dev' : 'default');
 	var child = cp.exec(process.cwd()+'/node_modules/.bin/gulp '+task, cb);
 
 	console.log('Gulp Task: ', task);

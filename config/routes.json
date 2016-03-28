@@ -6,7 +6,7 @@
     "controller": "home",
     "action": "index",
     "template": "home/home-page",
-    "scripts": [
+    "xscripts": [
       "main-homepage"
     ]
   },

@@ -44,8 +44,8 @@ fi
 
 if [ "$REBUILD" == "1" ]; then
 	echo "rebuilding..."
-	npm install -g bower
-	bower --allow-root install
+	#npm install -g bower
+	#bower --allow-root install
 	npm install
 	# Trouble installing toobusy package? One solution may be use older version of python, shown below.
 	# However I'm pretty damn sure there is a better solution I've used in the past...

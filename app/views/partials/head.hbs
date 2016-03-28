@@ -1,0 +1,42 @@
+<title>{{title}}{{#if appendBrandToTitleTag}} | {{siteName}}{{/if}}</title>{{! important we escape here (e.g. search results) }}
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{{!-- <meta name="site name" content="{{siteName}}"> --}}
+{{!-- {{{ metatags }}} --}}
+
+{{{ headerContent }}}
+
+{{! Some browsers don't have console.log() }}
+<script>(function (){ var l = function(){}; if (typeof window.console === 'undefined') { window.console = { log: l, error: l, debug: l, info: l, warn: l }; } })();</script>
+
+{{> styles }}
+
+{{! Favicons and touch icons }}
+{{! For retina-display iPads }}
+<link href="/images/favicon144x144.png" rel="apple-touch-icon-precomposed" sizes="144x144" type="image/png"/>
+{{! For retina-display iPhones }}
+<link href="/images/favicon114x114.png" rel="apple-touch-icon-precomposed" sizes="114x114" type="image/png"/>
+{{! For iPad 1 }}
+<link href="/images/favicon72x72.png" rel="apple-touch-icon-precomposed" sizes="72x72" type="image/png"/>
+{{! For iPhone 3G, iPod Touch and Android}}
+<link href="/images/favicon57x57.png" rel="apple-touch-icon-precomposed" type="image/png"/>
+{{! For Nokia }}
+<link href="/images/favicon57x57.png" rel="shortcut icon"/>
+{{! For everything else }}
+<link href="/images/favicon.png" rel="shortcut icon" type="image/png"/>
+<link href="/images/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+
+{{!--
+<!--[if lt IE 9]>
+<script src="/scripts/shivs/html5shiv.js"></script>
+<![endif]-->
+--}}
+
+{{! prevent zoom on android after rotating to landscape mode (http://css.dzone.com/articles/zoom-rotate-fix-webkit-mobile) }}
+<script>
+;(function(doc){
+  var addEvent = 'addEventListener', type = 'gesturestart', qsa = 'querySelectorAll', scales = [1, 1], meta = qsa in doc ? doc[qsa]('meta[name=viewport]') : [];
+  function fix(){ meta.content = 'width=device-width,minimum-scale=' + scales[0] + ',maximum-scale=' + scales[1]; doc.removeEventListener(type, fix, true); }
+  if((meta = meta[meta.length - 1]) && addEvent in doc){ fix(); scales = [.25, 1.6]; doc[addEvent](type, fix, true) }
+}(document));
+</script>

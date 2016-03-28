@@ -1,9 +1,0 @@
-{
-	"name": "fsb",
-	"version": "0.0.1",
-	"dependencies": {
-		"jquery": "~2.1.1",
-		"easyXDM": "~2.4.17",
-		"html5shiv": "~3.7.2"
-	}
-}

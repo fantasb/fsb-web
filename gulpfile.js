@@ -50,10 +50,10 @@ var libFiles = [
 	//,libsBase+'/underscore/underscore.js'
 	//,libsBase+'/microevents/microevent-debug.js'
 	//,libsBase+'/microevents/microevent.js'
-	//,libsBase+'/handlebars/handlebars.runtime.js'
+	,libsBase+'/handlebars/handlebars.runtime.js'
 	//,libsBase+'/loglevel/dist/loglevel.js'
 	//,libsBase+'/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js'
-	,libsBase+'/history.js/scripts/bundled/html4+html5/jquery.history.js'
+	//,libsBase+'/history.js/scripts/bundled/html4+html5/jquery.history.js' // there may be a semicolon issue with this and foundation being compiled next to each other
 	//,libsBase+'/slick-carousel/slick/slick.min.js'
 	//,libsBase+'/enquire/dist/enquire.js'
 	//,libsBase+'/jquery-zoom/jquery.zoom.js'
@@ -84,20 +84,14 @@ var libFiles = [
 
 // dev tasks
 gulp.task('dev', ['clean'], function(){
-	gulp.start('templates', 'libs', 'custom-modernizr', 'gulpbrowserify', 'css');
-});
-
-
-gulp.task('dev-ie', function(){
-	production = true;
-	gulp.start('css', 'templates', 'custom-modernizr', 'libs', 'gulpbrowserify', 'uglifycss', 'bless-css', 'watch');
+	gulp.start('css', 'templates', 'custom-modernizr', 'libs', 'gulpbrowserify', 'watch');
 });
 
 // dev tasks without css
 // - assumes 'startup' task has been run, so no 'clean' needed
 // - starts the 'watch' process to monitor template and scss changes (js is watched by supervisor)
 gulp.task('dev-nocss', function(){
-	gulp.start('templates', 'libs', 'custom-modernizr', 'gulpbrowserify', 'watch');
+	gulp.start('templates', 'custom-modernizr', 'libs', 'gulpbrowserify', 'watch');
 });
 
 // tasks to run before the server is started
@@ -108,10 +102,9 @@ gulp.task('startup', ['clean'], function(){
 // prod tasks
 gulp.task('default', ['clean'], function(){
 	production = true;
-	// uglifyjs task runs after browserfy is done on postbundle event handler so its not included here
+	// uglifyjs task runs after browserify is done on postbundle event handler so its not included here
 	gulp.start('css', 'templates', 'custom-modernizr', 'libs', 'gulpbrowserify', 'uglifycss', 'bless-css');
 });
-
 
 
 
@@ -121,11 +114,11 @@ gulp.task('default', ['clean'], function(){
 
 // remove old generated files
 gulp.task('clean', function(){
-	gulp.src(['public/compiled/*.*'],{read: false}).pipe(clean());
+	return gulp.src(['public/compiled/*.*'],{read: false}).pipe(clean());
 });
 
 gulp.task('custom-modernizr', function(){
-	gulp.src('public/libs/modernizr/modernizr.js')
+	return gulp.src('public/libs/modernizr/modernizr.js')
 		.pipe(require('gulp-modulizr')([
 			'cssclasses'
 			,'svg'
@@ -141,7 +134,7 @@ gulp.task('custom-modernizr', function(){
 });
 
 gulp.task('templates', function(){
-	// Assume all partials are in partials dir
+	// Assume all frontend partials are in frontend/ or shared/
 	//partials = gulp.src(['./app/views/partials/*.hbs', './shared/views/partials/*.hbs', './frontend/views/partials/*.hbs'])
 	var partials = gulp.src(['./frontend/views/partials/*.hbs', './shared/views/partials/*.hbs'])
 		.pipe(handlebars())
@@ -174,7 +167,7 @@ gulp.task('templates', function(){
 
 // concatenate all external libraries into one file
 gulp.task('libs', function(){
-	gulp.src(libFiles)
+	return gulp.src(libFiles)
 		.pipe(concat('libs.js'))
 		.pipe(gulp.dest('public/compiled/'))
 	;
@@ -182,7 +175,7 @@ gulp.task('libs', function(){
 
 gulp.task('gulpbrowserify', function(){
 	// grab all files in scripts and sub dirs
-	recursive('./frontend/scripts', function(err,files){
+	return recursive('./frontend/scripts', function(err,files){
 		// filter out any files that are not main files
 		files = _.filter(files, function(path){
 			return path.indexOf('main-') != -1;
@@ -240,9 +233,9 @@ gulp.task('gulpbrowserify', function(){
 });
 
 gulp.task('uglifyjs', function(){
-	if (!production) return;
+	//if (!production) return;
 	//console.log('UGLIFY!');
-	gulp.src('public/compiled/*.js')
+	return gulp.src('public/compiled/*.js')
 		.pipe(uglify())
 		.pipe(gulp.dest('public/compiled'))
 	;
@@ -250,7 +243,8 @@ gulp.task('uglifyjs', function(){
 
 // compile sass
 gulp.task('css', function(){
-	var stream = gulp.src(['frontend/styles/main.scss', 'frontend/styles/solo-homepage.scss'])
+	//var stream = gulp.src(['frontend/styles/main.scss', 'frontend/styles/solo-homepage.scss'])
+	var stream = gulp.src(['frontend/styles/main.scss'])
 		.on('error', notify.onError({
 			message: 'SASS error :: <%= error.message %>'
 			,title: 'JavaScript Error'
@@ -259,7 +253,7 @@ gulp.task('css', function(){
 	if (!production) {
 		stream.pipe(sourcemaps.init());
 	}
-	stream.pipe(sass({includePaths: require('node-bourbon').includePaths}))
+	return stream.pipe(sass({includePaths: require('node-bourbon').includePaths}))
 		.pipe(sourcemaps.write())
 		.pipe(gulp.dest('public/compiled/'))
 	;
@@ -268,7 +262,7 @@ gulp.task('css', function(){
 // make css ugly
 gulp.task('uglifycss', ['css'], function(){
 	if (!production) return;
-	gulp.src(['public/compiled/main.css'])
+	return gulp.src(['public/compiled/main.css'])
 		.pipe(uglifycss({'max-line-len':80}))
 		.pipe(gulp.dest('public/compiled/'))
 	;
@@ -280,7 +274,7 @@ gulp.task('uglifycss', ['css'], function(){
 // -------------------------------------------------------------------------------
 gulp.task('bless-css', ['uglifycss'], function(){
 	if (!production) return;
-	gulp.src(['public/compiled/main.css'])
+	return gulp.src(['public/compiled/main.css'])
 		.pipe(bless({
 			force: false
 			,cleanup: false
@@ -306,6 +300,7 @@ gulp.task('watch', function(){
 	var sassFiles = gulp.watch(['frontend/styles/*.scss', 'frontend/styles/**/*.scss']);
 	sassFiles.on('change', function(){
 		gulp.start('css');
+		// temp hack; should be more tied to task definitions above
 		if (process.env.GULP_TASK == 'dev-ie') {
 			gulp.start('uglifycss');
 			gulp.start('bless-css');

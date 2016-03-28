@@ -1,0 +1,66 @@
+
+
+@mixin opacity($val) {
+  // IE 8
+  // -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=$val * 100)";
+  // IE 5-7
+  // filter: alpha(opacity=$val * 100);
+  // Netscape
+  -moz-opacity: $val;
+  // Safari 1.x
+  -khtml-opacity: $val;
+  // Good browsers
+  opacity: $val;
+}
+
+@mixin font($name, $weight) {
+  font-family: $name, sans-serif;
+  font-weight: $weight;
+}
+
+
+/*--------------------------------
+  Transitions
+----------------------------------*/
+@mixin transform($val) {
+  -webkit-transform: $val;
+     -moz-transform: $val;
+       -o-transform: $val;
+          transform: $val;
+}
+
+@mixin backface-visibility($val) {
+  -webkit-backface-visibility: $val;
+     -moz-backface-visibility: $val;
+       -o-backface-visibility: $val;
+          backface-visibility: $val;
+}
+
+@mixin transition-delay($dur) {
+  -webkit-transition-delay: $dur;
+     -moz-transition-delay: $dur;
+       -o-transition-delay: $dur;
+          transition-delay: $dur;
+}
+
+
+@mixin transition-duration($dur) {
+  -webkit-transition-duration: $dur;
+     -moz-transition-duration: $dur;
+       -o-transition-duration: $dur;
+          transition-duration: $dur;
+}
+
+@mixin ease-in-out-quart($dur) {
+  -webkit-transition: all $dur cubic-bezier(0.770, 0.000, 0.175, 1.000);
+     -moz-transition: all $dur cubic-bezier(0.770, 0.000, 0.175, 1.000);
+       -o-transition: all $dur cubic-bezier(0.770, 0.000, 0.175, 1.000);
+          transition: all $dur cubic-bezier(0.770, 0.000, 0.175, 1.000);
+}
+
+@mixin ease-out-quart($dur) {
+  -webkit-transition: all $dur cubic-bezier(0.165, 0.840, 0.440, 1.000);
+     -moz-transition: all $dur cubic-bezier(0.165, 0.840, 0.440, 1.000);
+       -o-transition: all $dur cubic-bezier(0.165, 0.840, 0.440, 1.000);
+          transition: all $dur cubic-bezier(0.165, 0.840, 0.440, 1.000);
+}
