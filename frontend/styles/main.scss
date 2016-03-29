@@ -6,6 +6,7 @@
 @import "variables/fonts.scss";
 @import "mixins/helpers.scss";
 @import "mixins/fonts.scss";
+@import "variables/layout.scss";
 
 
 // $include-html-top-bar-classes: true;
@@ -18,7 +19,7 @@ $mobile-menu-line-height: rem-calc(47);//3.5rem;
 
 /*--------------------------------
 
-  BASE STYLES (may or may not be on ever page - might be extended)
+  BASE STYLES (may or may not be on every page - might be extended)
 
 ----------------------------------*/
 @import "typography.scss";
@@ -33,11 +34,7 @@ $mobile-menu-line-height: rem-calc(47);//3.5rem;
 ----------------------------------*/
 @import "promo-top.scss";
 @import "main-header.scss";
-//@import "customer-bar.scss";
-//@import "modals.scss";
-//@import "dropdowns.scss";
-//@import "cart.scss";
-//@import "supernav.scss";
+@import "main-footer.scss";
 
 
 /*--------------------------------

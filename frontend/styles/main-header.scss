@@ -1,6 +1,6 @@
 .main-header {
 	margin: 0 auto;
-	max-width: 1200px;
+	max-width: $headerMaxWidth;
 	margin-top: 12px;
 	margin-bottom: 16px;
 }
@@ -8,9 +8,19 @@
 	@extend .font-roboto-medium;
 	font-size: 34px;
 	letter-spacing: 0.05em;
+	line-height: 1;
 
 	&,a,a:hover {
 		color: #000;
+	}
+
+	h1,h2 {
+		display: inline;
+		margin: 0;
+		padding: 0;
+		line-height: inherit;
+		font-weight: inherit;
+		font-size: inherit;
 	}
 }
 .main-header-subtitle {
