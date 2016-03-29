@@ -10,9 +10,8 @@
 		- Universal Bits (head, scripts, nav, footer, etc)
 	- SASS
 	- HB Helpers
+- Fix gulp watch for default development user
 - Configure winston to use `log/`
-- Consolidate views structure
-	- vhost.js / server.js / gulpfile.js
 - Refactor handlebars/index.js pathToTry stuff
 	- Make sure is trying the correct spot first and remove backup attempt
 - Deprecate bower if not using
@@ -24,6 +23,7 @@
 	- If needed at all. Might be best to remove from code completely and one-off
 - Refactor handlebars/helpers.js to stop passing args as refs and just return the helpers
 - Deprecate `app/helpers/waiter.js` - is an antipattern
+	- Solve `app.locals.fullDomain` situation first and test `util.absolutifyUrl` in a template
 - Streamline `routes-provider.js`
 	- See "@todo"s in file
 - Refactor routing (use Express 4.x)

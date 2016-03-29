@@ -1,0 +1,7 @@
+
+{{!-- From JS: `Handlebars.partials['rank-items']([{prop1:123},{prop1:456}])` --}}
+<div class="rank-items">
+	{{#each this}}
+		{{> rank-item this}}
+	{{/each}}
+</div>
