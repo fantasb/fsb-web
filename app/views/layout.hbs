@@ -7,11 +7,12 @@
 <body class='page-{{ page }} {{ bodyClasses }}'>
 	{{> scripts-btop }}
 
-	<header>{{> nav}}</header>
+	{{> promo-top}}
+	<header id="header">{{>main-header}}</header>
 
-	<main class="main" id="main">{{{ mainContent }}}</main>
+	<main id="main">{{{ mainContent }}}</main>
 
-	<header>{{> footer}}</header>
+	<footer id="footer">{{>main-footer}}</footer>
 
 	{{> scripts }}
 </body>

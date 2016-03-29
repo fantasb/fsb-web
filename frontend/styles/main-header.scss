@@ -1,0 +1,49 @@
+.main-header {
+	margin: 0 auto;
+	max-width: 1200px;
+	margin-top: 12px;
+	margin-bottom: 16px;
+}
+.main-header-title {
+	@extend .font-roboto-medium;
+	font-size: 34px;
+	letter-spacing: 0.05em;
+
+	&,a,a:hover {
+		color: #000;
+	}
+}
+.main-header-subtitle {
+	@extend .font-roboto-light;
+	margin-left: 25px;
+	font-size: 18px;
+	display: inline;
+	vertical-align: baseline;
+}
+
+// --- Nav
+.main-header {
+	.nav {
+		float: right;
+		padding-top: 12px;
+
+		ul,li {
+			margin: 0;
+			padding: 0;
+		}
+		li {
+			list-style-type: none;
+			display: inline-block;
+		}
+	}
+
+	li.nav-item {
+		margin-left: 1em;
+		text-transform: uppercase;
+		font-size: 16px;
+		a {
+
+		}
+	}
+}
+

@@ -25,16 +25,20 @@ $mobile-menu-line-height: rem-calc(47);//3.5rem;
 //@import "overrides.scss";
 @import "base.scss";
 
+
 /*--------------------------------
 
   CORE STYLES (included on every page)
 
 ----------------------------------*/
+@import "promo-top.scss";
+@import "main-header.scss";
 //@import "customer-bar.scss";
 //@import "modals.scss";
 //@import "dropdowns.scss";
 //@import "cart.scss";
 //@import "supernav.scss";
+
 
 /*--------------------------------
 

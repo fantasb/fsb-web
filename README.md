@@ -11,6 +11,7 @@
 	- SASS
 	- HB Helpers
 - Fix gulp watch for default development user
+	- Not picking up partials?
 - Configure winston to use `log/`
 - Refactor handlebars/index.js pathToTry stuff
 	- Make sure is trying the correct spot first and remove backup attempt

@@ -307,13 +307,13 @@ gulp.task('watch', function(){
 		}
 	});
 
-	//templateFiles = gulp.watch(['frontend/views/**/*.hbs', 'shared/views/**/*.hbs', 'app/views/partials/*.hbs']);
-	var templateFiles = gulp.watch(['frontend/views/**/*.hbs', 'shared/views/**/*.hbs']);
+	var templateFiles = gulp.watch(['frontend/views/**/*.hbs', 'shared/views/**/*.hbs', 'app/views/partials/*.hbs']);
+	//var templateFiles = gulp.watch(['frontend/views/**/*.hbs', 'shared/views/**/*.hbs']);
 	templateFiles.on('change', function(){
 		gulp.start('templates');
 	});
 
-	//var packageJson = gulp.watch ['package.json'];
+	//var packageJson = gulp.watch(['package.json']);
 	//packageJson.on('change', function(){
 	//	gulp.start('css', 'merge');
 	//});
