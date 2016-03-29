@@ -19,7 +19,7 @@ $mobile-menu-line-height: rem-calc(47);//3.5rem;
 
 /*--------------------------------
 
-  BASE STYLES (may or may not be on every page - might be extended)
+  BASE STYLES
 
 ----------------------------------*/
 @import "typography.scss";
@@ -29,23 +29,20 @@ $mobile-menu-line-height: rem-calc(47);//3.5rem;
 
 /*--------------------------------
 
-  CORE STYLES (included on every page)
+  MODULES
 
 ----------------------------------*/
 @import "promo-top.scss";
 @import "main-header.scss";
 @import "main-footer.scss";
+@import "hero.scss";
 
 
 /*--------------------------------
 
-  PAGE SPECIFIC (layout)
+  PAGE SPECIFIC
 
 ----------------------------------*/
-//@import "article.scss";
-//@import "editor-bio.scss";
 
-
-//@import "common.scss";
 
 
