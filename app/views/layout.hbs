@@ -6,7 +6,13 @@
 </head>
 <body class='page-{{ page }} {{ bodyClasses }}'>
 	{{> scripts-btop }}
+
+	<header>{{> nav}}</header>
+
 	<main class="main" id="main">{{{ mainContent }}}</main>
+
+	<header>{{> footer}}</header>
+
 	{{> scripts }}
 </body>
 </html>
