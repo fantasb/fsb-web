@@ -1,7 +1,6 @@
 .promo-top {
 	@extend .font-roboto-light;
 	background: #465a6d;
-	height: 54px;
 	color: #fff;
 	font-size: 18px;
 	letter-spacing: 0.08em;
@@ -10,5 +9,5 @@
 }
 .promo-top-content {
 	// @todo: multiline center worth it?
-	padding-top: 12px;
+	padding: 12px 0;
 }
