@@ -1,14 +1,17 @@
 .main-header {
 	margin: 0 auto;
 	max-width: $headerMaxWidth;
-	margin-top: 12px;
-	margin-bottom: 16px;
+	padding-top: $whitespaceVertical1;
+	padding-bottom: #{$whitespaceVertical1 - 2};
+	float: none;
+	border-bottom: 1px solid #bfbfbf;
 }
 .main-header-title {
 	@extend .font-roboto-medium;
 	font-size: 34px;
 	letter-spacing: 0.05em;
 	line-height: 1;
+	text-transform: uppercase;
 
 	&,a,a:hover {
 		color: #000;
@@ -21,13 +24,15 @@
 		line-height: inherit;
 		font-weight: inherit;
 		font-size: inherit;
+		text-transform: inherit;
 	}
 }
 .main-header-subtitle {
 	@extend .font-roboto-light;
-	margin-left: 25px;
+	margin-left: 16px;
 	font-size: 18px;
 	display: inline;
+	text-transform: none;
 	vertical-align: baseline;
 }
 
@@ -35,7 +40,7 @@
 .main-header {
 	.nav {
 		float: right;
-		padding-top: 12px;
+		padding-top: $whitespaceVertical1;
 
 		ul,li {
 			margin: 0;

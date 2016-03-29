@@ -19,4 +19,9 @@ input:-moz-placeholder {color:#999; font-style:italic; text-transform:none !impo
 input::-moz-placeholder {color:#999; font-style:italic; text-transform:none !important;}
 input:-ms-input-placeholder {color:#999; font-style:italic; text-transform:none !important;}
 
-
+// Wrap normal pages like: <div class="main-content columns"></div>
+.main-content {
+	max-width: $contentMaxWidth;
+	margin: 0 auto;
+	float: none;
+}
