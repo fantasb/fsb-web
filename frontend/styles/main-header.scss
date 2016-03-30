@@ -1,17 +1,18 @@
 .main-header {
 	margin: 0 auto;
 	max-width: $headerMaxWidth;
-	padding-top: $whitespaceVertical1;
-	padding-bottom: #{$whitespaceVertical1 - 2};
+	padding-top: $whitespaceVertical2;
+	padding-bottom: #{$whitespaceVertical2 - 1};
 	float: none;
 	border-bottom: 1px solid #bfbfbf;
 }
 .main-header-title {
 	@extend .font-roboto-medium;
-	font-size: 34px;
+	font-size: 36px;
 	letter-spacing: 0.05em;
 	line-height: 1;
 	text-transform: uppercase;
+	white-space: nowrap;
 
 	&,a,a:hover {
 		color: #000;
@@ -35,6 +36,16 @@
 	text-transform: none;
 	vertical-align: baseline;
 }
+@media (max-width: 470px) {
+	.main-header-title {
+	}
+	.main-header-subtitle {
+		display: block;
+		margin-left: 0;
+		font-size: 19px; // attempt to justify with parent
+	}
+}
+
 
 // --- Nav
 .main-header {
@@ -58,6 +69,58 @@
 		font-size: 16px;
 		a {
 
+		}
+	}
+
+	// --- Menued Nav
+	.nav-toggle {
+		display: block;
+		width: 44px;
+		height: 40px;
+		background: url(/images/nav-menu-icon01.png) no-repeat center center;
+		float: right;
+	}
+	.nav-toggle-target.toggled-on {
+		display: block !important; // important to beat foundation
+		overflow: visible;
+		position: relative;
+		z-index: 1;
+
+		.nav {
+			@include box-shadow(0px 1px 2px 1px #ccc);
+			position: absolute;
+			right: -1.875rem; // .columns padding
+			top: 0;
+			margin: 0;
+			padding: 0;
+			width: 80vw;
+			max-width: 200px;
+			background: #fff;
+			border: 1px solid #bfbfbf;
+			border-bottom: none;
+
+			// fixed format...
+			@include box-shadow(none);
+			position: fixed;
+			right: 0;
+			top: 0;
+			height: 100%;
+			background: #f0f0f0;
+		}
+		li.nav-item {
+			display: block;
+			width: auto;
+			margin: 0;
+			padding: 0;
+			border-bottom: 1px solid #bfbfbf;
+			a {
+				display: block;
+				padding: 0.4em;
+				background: #f0f0f0;
+			}
+			a:hover {
+				background: #e8e8e8;
+			}
 		}
 	}
 }

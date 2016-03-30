@@ -18,6 +18,12 @@
   font-weight: $weight;
 }
 
+@mixin box-shadow($v) {
+	-moz-box-shadow: $v;
+	-webkit-box-shadow: $v;
+	box-shadow: $v;
+}
+
 
 /*--------------------------------
   Transitions

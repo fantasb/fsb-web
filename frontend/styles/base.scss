@@ -24,4 +24,7 @@ input:-ms-input-placeholder {color:#999; font-style:italic; text-transform:none 
 	max-width: $contentMaxWidth;
 	margin: 0 auto;
 	float: none;
+
+	// default whitespace for footer, meant to be overridden when appropriate
+	margin-bottom: $whitespaceVertical1;
 }
