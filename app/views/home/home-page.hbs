@@ -2,8 +2,10 @@
 {{>hero}}
 
 <div class="main-content columns">
-	
-	[content goes here]
+
+	{{>custom-dropdown placeholder='Select a role...' items=roleOptions default=1 }}
+
+	{{>custom-dropdown placeholder='Specialty...' items=[] default='' }}
 
 	<div class="clear">&nbsp;</div>
 </div>

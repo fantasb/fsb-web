@@ -1,0 +1,28 @@
+//
+// Concept: Make select larger than container so arrow gets cut off
+// Intended to be modified with a custom class; leave these base styles be
+//
+// @todo: cross-browser qa #xbrowser
+//
+
+.custom-dropdown {
+	display: inline-block;
+	min-width: 14em;
+	overflow: hidden;
+	background: url(/images/dropdown-arr-01-full.gif) no-repeat right;
+	border: 1px solid #ccc;
+
+	select {
+		@include calc('width', '100% + 28px', '120%'); // #xbrowser
+		background: transparent;
+		padding: 0 0 0 0.5em;
+		border: 0;
+		border-radius: 0;
+		-webkit-appearance: none;
+	}
+}
+.custom-dropdown, .custom-dropdown select {
+	font-size: 16px;
+	line-height: 1;
+	height: 2.5em;
+}

@@ -2,6 +2,18 @@
 // Handlebar template helpers
 //
 
+var comparators = {
+	'==': function(a,b){ return a == b; },
+	'===': function(a,b){ return a === b; },
+	'!=': function(a,b){ return a != b; },
+	'!==': function(a,b){ return a !== b; },
+	'<': function(a,b){ return a < b; },
+	'<=': function(a,b){ return a <= b; },
+	'>': function(a,b){ return a > b; },
+	'>=': function(a,b){ return a >= b; },
+	'typeof': function(a,b){ return typeof a == b; }
+};
+
 // @todo: refactor passing refs as args. we're working with effing node and browserify here
 module.exports = function(_, util){ return {
 	uniq: function(){return util.uniq.apply(util,arguments)}
@@ -17,42 +29,14 @@ module.exports = function(_, util){ return {
 	// @todo: implement this in util.js as well
 	//,stripWhiteSpace: function(str){ return (str||'').replace(/(^\s+|\s+$)/g, ''); }
 
+	//,toLowerCase: function(v){ return v.toLowerCase(); }
 
-	// #here
-/* @todo: translate these
-	toLowerCase: (value) -> value.toLowerCase()
+	,if_: function(val1, operator, val2, opts){
+		return comparators[operator](val1,val2) ? opts.fn(this) : opts.inverse(this);
+	}
 
-	if_: (lvalue, operator, rvalue, options) ->
-		if arguments.length < 3
-			throw new Error("Handlerbars Helper 'compare' needs 2 parameters")
 
-		unless options
-			options = rvalue
-			rvalue = operator
-			operator = "=="
-
-		operators =
-			'==': (l, r) -> `l == r`
-			'===': (l, r) -> l is r
-			'!=': (l, r) -> `l != r`
-			'!==': (l, r) -> l unless r
-			'<': (l, r) -> l < r
-			'>': (l, r) -> l > r
-			'<=': (l, r) -> l <= r
-			'>=': (l, r) ->	l >= r
-			'typeof': (l, r) -> typeof l == r
-
-		unless operators[operator]
-			throw new Error("Handlerbars Helper 'compare' doesn't know the operator " + operator)
-
-		result = operators[operator](lvalue, rvalue)
-		#console.log 'RESULT', JSON.stringify(lvalue), operator, JSON.stringify(rvalue), result, operators[operator]
-
-		if result
-			return options.fn(this)
-		else
-			return options.inverse(this)
-
+/* @todo: translate these as needed
 	# If x && y && z && ...
 	ifa: () ->
 		i = 0
@@ -73,18 +57,6 @@ module.exports = function(_, util){ return {
 
 	time: ->
 		return +new Date
-
-	math: (lvalue, operator, rvalue, options) ->
-		lvalue = parseFloat(lvalue)
-		rvalue = parseFloat(rvalue)
-
-		return {
-				"+": lvalue + rvalue,
-				"-": lvalue - rvalue,
-				"*": lvalue * rvalue,
-				"/": lvalue / rvalue,
-				"%": lvalue % rvalue
-		}[operator]
 
 	incr: (v, opts) ->
 		opts.fn (+v + 1)
