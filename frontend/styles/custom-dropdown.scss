@@ -15,7 +15,7 @@
 	select {
 		@include calc('width', '100% + 28px', '120%'); // #xbrowser
 		background: transparent;
-		padding: 0 0 0 0.5em;
+		padding: 0 0 0 0.8em;
 		border: 0;
 		border-radius: 0;
 		-webkit-appearance: none;
@@ -23,6 +23,6 @@
 }
 .custom-dropdown, .custom-dropdown select {
 	font-size: 16px;
-	line-height: 1;
-	height: 2.5em;
+	line-height: 1.3;
+	height: 2.8em;
 }
