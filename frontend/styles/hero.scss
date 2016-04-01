@@ -24,21 +24,21 @@
 	text-align: center;
 }
 .hero-title0 {
-	@extend .font-roboto-light;
+	@extend .font-main-light;
 	white-space: nowrap;
 	text-transform: uppercase;
 	font-size: 18px;
 	line-height: 1.5;
 }
 .hero-title1 {
-	@extend .font-roboto-medium;
+	@extend .font-main-medium;
 	white-space: nowrap;
 	text-transform: none;
 	font-size: 36px;
 	line-height: 1.5;
 }
 .hero-subtitle {
-	@extend .font-roboto-regular;
+	@extend .font-main-regular;
 	white-space: nowrap;
 	text-transform: none;
 	font-size: 14px;

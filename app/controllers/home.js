@@ -1,4 +1,7 @@
 
+var api = require('../helpers/api.js')
+,_ = require('underscore')
+;
 
 module.exports = {
 
@@ -7,12 +10,25 @@ module.exports = {
 			,viewData = {}
 		;
 		//console.log('HOME CONTROLLER!!!', 'index', res.locals);
-		viewData.roleOptions = [
-			{value:1, label:'iOS Developer'}
-			,{value:2, label:'Recruiter'}
-			,{value:3, label:'Exotic Dancer'}
-		];
-		res.render(res.locals.template, viewData);
+		viewData.search = {
+			roleOptions: [
+				{value:1, label:'iOS Developer'}
+				,{value:2, label:'Recruiter'}
+				,{value:3, label:'Exotic Dancer'}
+			]
+			,roleOptionsDefault: 2
+			,subroleOoptions: []
+		};
+		viewData.search.roleName = _.findWhere(viewData.search.roleOptions, {value:viewData.search.roleOptionsDefault}).label;
+
+		api('results',{role_id:viewData.search.roleOptionsDefault},function(err,data){
+			if (err || !Array.isArray(data&&data.candidates)) {
+				throw new Error(err || 'unexpected response from api');
+			}
+			viewData.search.results = data.candidates;
+			res.render(res.locals.template, viewData);
+		});
+
 	}
 
 	,demo: function(req,res){

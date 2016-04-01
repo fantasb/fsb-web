@@ -3,7 +3,8 @@
 		"port": 3000
 	},
 	"https": false,
-	"fullDomain": "www.fsb.com",
+	"siteName": "Ranktt",
+	"fullDomain": "www.ranktt.com",
 	"vhost": "*.com",
 	"workerTimeout": 5000,
 	"socketTimeout": 30000,
@@ -11,10 +12,8 @@
 	"cmsTtl": 900000,
 
 	"api": {
-		"app": "",
-		"secret": "",
-		"endpoint": "",
-		"version": ""
+		"endpoint": "http://127.0.0.1:3001/api/",
+		"basicAuthKey": null
 	},
 	"facebook": {
 	},
@@ -37,7 +36,7 @@
 	},
 	"pagemetatags": {
 		"default": [
-			{"property":"og:site_name", "content":"FantasB"},
+			{"property":"og:site_name", "content":"Ranktt"},
 			{"name":"google-site-verification", "content":""}
 		]
 	}

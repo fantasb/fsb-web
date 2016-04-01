@@ -3,13 +3,14 @@ var http = require('http')
 //,querystring = require('querystring')
 ,querystring = require('qs') // Handles nested data structures unlike native querystring module
 ,Url = require('url')
-,config = require('../config.js')
+,config = require('../../config.js')
+,winston = require('winston')
 ,apiConfig = null
 ;
 
 module.exports = function(/* method must come after url */){
 	var apiConfig = getApiConfig(), method, url, data, cb, endpointOverride
-	for (i=0;i<arguments.length;++i) {
+	for (var i=0;i<arguments.length;++i) {
 		switch (typeof arguments[i]) {
 			case 'string': url&&method ? endpointOverride = arguments[i] : url ? method = arguments[i].toUpperCase() : url = arguments[i]; break;
 			case 'object': data = arguments[i]; break;
@@ -49,10 +50,11 @@ module.exports = function(/* method must come after url */){
 		,port: apiConfig.port
 		,path: apiConfig.path + (url[0] == '/' ? url.substr(1) : url)
 		,method: method
-		,headers: {
-			authorization: 'Basic '+apiConfig.userKey
-		}
+		,headers: {}
 	};
+	if (apiConfig.userKey) {
+		requestOpts.headers['authorization'] = 'Basic '+apiConfig.userKey;
+	}
 	if (method == 'POST') { // if api client doesn't listen for multi-part data
 		requestOpts.headers['content-type'] = 'application/x-www-form-urlencoded';
 		requestOpts.headers['content-length'] = Buffer.byteLength(data)
@@ -78,8 +80,10 @@ module.exports = function(/* method must come after url */){
 
 function getApiConfig(){
 	if (!apiConfig) {
-		apiConfig = parseApiEndpoint(config.apiEndpoint)
-		apiConfig.userKey = new Buffer(config.apiKey).toString('base64')
+		apiConfig = parseApiEndpoint(config.api.endpoint)
+		if (config.api.basicAuthKey) {
+			apiConfig.userKey = new Buffer(config.api.basicAuthKey).toString('base64')
+		}
 	}
 	return apiConfig
 }

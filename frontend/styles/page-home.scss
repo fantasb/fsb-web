@@ -1,0 +1,61 @@
+
+.page-home {
+	.main-2col-left {
+		padding-right: 0.9375rem;
+	}
+	.main-2col-right {
+		float: right;
+	}
+
+	img.SAMPLE-sidebar-content {
+		margin-bottom: 5vh;
+	}
+
+	@media (max-width:1130px) {
+		.search-controls {
+			// break the line
+			.custom-dropdown {
+				width: 30vw;
+			}
+			// align
+			.search-header-text {
+				width: 4.5%;
+				margin-left: 0;
+			}
+			/*
+			// break the line (problem: cant give both width and line-feed trick to inline element)
+			.search-header-text:nth-child(4):before {
+				content: "\A";
+				white-space: pre;
+			}
+			// align
+			.search-header-text {
+				width: 10%;
+			}
+			*/
+		}
+	}
+
+	@media #{$small-only} {
+
+		img.SAMPLE-sidebar-content {
+			width: 48%;
+			margin: 0 0.8% 2.4% 0.8%;
+		}
+
+		.search-controls {
+			.search-header-text, .custom-dropdown {
+				display: block;
+				width: 90%;
+				margin: 0 auto $whitespaceVertical1 auto;
+				position: static;
+			}
+			.search-header-text {
+				text-align: center;
+			}
+			.custom-dropdown:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+}

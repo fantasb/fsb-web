@@ -1,11 +1,11 @@
 
-@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700);
+//@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700);
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500,700,100);
 
 // Roboto Family
-.font-roboto-thin    { @include font('Roboto', 100); }
-.font-roboto-light   { @include font('Roboto', 300); }
-.font-roboto-regular { @include font('Roboto', 400); }
-.font-roboto-medium  { @include font('Roboto', 500); }
-.font-roboto-bold    { @include font('Roboto', 700); }
+.font-main-thin    { @include font('Roboto', 100); }
+.font-main-light   { @include font('Roboto', 300); }
+.font-main-regular { @include font('Roboto', 400); }
+.font-main-medium  { @include font('Roboto', 500); }
+.font-main-bold    { @include font('Roboto', 700); }
 

@@ -1,0 +1,19 @@
+
+.search-controls {
+	padding: $whitespaceVertical1 0 $whitespaceVertical2 0;
+	border-bottom: 1px solid #bfbfbf;
+	margin-bottom: $whitespaceVertical2;
+
+	.search-header-text {
+		display: inline-block;
+		position: relative;
+		// 18px/-.86em 16px/-.90em
+		font-size: 18px;
+		top: -0.86em;
+		margin: 0 1em;
+	}
+	.search-header-text:first-child {
+		text-transform: uppercase;
+		margin-left: 0;
+	}
+}

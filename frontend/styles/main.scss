@@ -25,6 +25,7 @@ $mobile-menu-line-height: rem-calc(47);//3.5rem;
 @import "typography.scss";
 //@import "overrides.scss";
 @import "base.scss";
+@import "social-icons.scss";
 
 
 /*--------------------------------
@@ -37,6 +38,8 @@ $mobile-menu-line-height: rem-calc(47);//3.5rem;
 @import "main-footer.scss";
 @import "hero.scss";
 @import "custom-dropdown.scss";
+@import "search-controls.scss";
+@import "search-results.scss";
 
 
 /*--------------------------------
@@ -45,5 +48,6 @@ $mobile-menu-line-height: rem-calc(47);//3.5rem;
 
 ----------------------------------*/
 
+@import "page-home.scss";
 
 

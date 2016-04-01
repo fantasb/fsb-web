@@ -23,34 +23,34 @@ h3, h4, .h3, .h4 {
 }
 
 h1, .h1 {
-  @extend .font-roboto-thin;
+  @extend .font-main-thin;
   font-size: $h1-font-size;
 }
 
 h2, .h2 {
-  @extend .font-roboto-bold;
+  @extend .font-main-bold;
   font-size: $h2-font-size;
 }
 
 h3, .h3 {
-  @extend .font-roboto-bold;
+  @extend .font-main-bold;
   font-size: $h3-font-size;
 }
 
 h4, .h4 {
-  @extend .font-roboto-bold;
+  @extend .font-main-bold;
   font-size: $h4-font-size;
 }
 
 h5, .h5 {
-  @extend .font-roboto-medium;
+  @extend .font-main-medium;
   text-transform: uppercase;
   margin-bottom: rem-calc(7);
   font-size: $h5-font-size;
 }
 
 h6, .h6 {
-  @extend .font-roboto-regular;
+  @extend .font-main-regular;
   margin-bottom: rem-calc(6);
   font-size: $h6-font-size;
 }

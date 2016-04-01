@@ -104,6 +104,7 @@ $gray2           : #898989;
 $gray3           : #515151;
 //$red             : red;
 $red             : #ED1C24;
+$linkColor: #465a6d;
 
 $white           : #FFFFFF;
 $ghost           : #FAFAFA;
@@ -286,7 +287,7 @@ $h6-font-size: rem-calc(12);
 $anchor-text-decoration: none;
 $anchor-text-decoration-hover: none;
 $anchor-font-color: inherit;
-$anchor-font-color-hover: $red;//scale-color($primary-color, $lightness: -14%);
+$anchor-font-color-hover: $linkColor;//scale-color($primary-color, $lightness: -14%);
 
 // We use these to style the <hr> element
 // $hr-border-width: 1px;
@@ -1420,10 +1421,10 @@ $topbar-link-weight: $font-weight-normal;
 $topbar-link-font-size: rem-calc(13);
 
 $topbar-link-bg: $topbar-bg;
-$topbar-link-bg-color-hover: $red; //#272727;
+$topbar-link-bg-color-hover: $linkColor; //#272727;
 $topbar-link-bg-hover: false; // foundation probably intended this for special effects.
 $topbar-link-bg-active: transparent; //$primary-color;
-$topbar-link-bg-active-hover: scale-color($red, $lightness: 60%);
+$topbar-link-bg-active-hover: scale-color($linkColor, $lightness: 60%);
 
 $topbar-link-font-family: $body-font-family;
 $topbar-link-text-transform: none;

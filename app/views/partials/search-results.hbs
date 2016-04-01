@@ -1,0 +1,11 @@
+
+{{!-- From JS: `Handlebars.partials['search-results']([{prop1:123},{prop1:456}])` --}}
+<div class="search-results">
+	{{#if results.[0]}}
+		{{#each results}}
+			{{> search-result this roleName=../roleName index=@index}}
+		{{/each}}
+	{{else}}
+		<div class="search-results-none">No results found</div>
+	{{/if}}
+</div>

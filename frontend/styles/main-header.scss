@@ -7,7 +7,7 @@
 	border-bottom: 1px solid #bfbfbf;
 }
 .main-header-title {
-	@extend .font-roboto-medium;
+	@extend .font-main-medium;
 	font-size: 36px;
 	letter-spacing: 0.05em;
 	line-height: 1;
@@ -29,7 +29,7 @@
 	}
 }
 .main-header-subtitle {
-	@extend .font-roboto-light;
+	@extend .font-main-light;
 	margin-left: 16px;
 	font-size: 18px;
 	display: inline;

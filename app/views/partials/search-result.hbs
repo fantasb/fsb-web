@@ -1,0 +1,61 @@
+
+<div class="search-result columns">
+	<div class="search-result-place column small-1 medium-1">{{#incr index}}{{padZ this}}{{/incr}}</div>
+
+	<div class="search-result-pic column small-5 medium-3">
+		<img src="{{#if linkedin_img_url}}{{linkedin_img_url}}{{else}}/images/profilephoto-default-01.png{{/if}}" alt="{{roleName}} {{name}}" />
+	</div>
+
+	<div class="search-result-info column small-6 medium-5">
+		{{#if name}}
+			<h2 class="search-result-name">{{name}}</h2>
+		{{/if}}
+
+		{{#if work_history_items}}{{#if work_history_items.[0]}}
+			<div class="search-result-title">
+				<h3 class="search-result-subtitle">
+					{{#ifa work_history_items.[0].title work_history_items.[0].company_name}}
+						<span class="search-result-subtitle-title">{{work_history_items.[0].title}}</span> at <span class="search-result-subtitle-company">{{work_history_items.[0].company_name}}</span>
+					{{else}}
+						{{#if work_history_items.[0].title}}
+							<span class="search-result-subtitle-title">{{work_history_items.[0].title}}</span>
+						{{else}}
+							<span class="search-result-subtitle-company">{{work_history_items.[0].company_name}}</span>
+						{{/if}}
+					{{/ifa}}
+				</h3>
+			</div>
+			{{#ifa work_history_items.[0].location work_history_items.[0].location.city work_history_items.[0].location.state}}
+				<div class="search-result-location">{{work_history_items.[0].location.city}}, {{work_history_items.[0].location.state}}</div>
+			{{/ifa}}
+		{{/if}}{{/if}}
+
+		{{#if skills}}{{#if skills.[0]}}
+			<div class="search-result-skills">
+				{{join skills ', ' 0 5 '...' 'display_name'}}
+			</div>
+		{{/if}}{{/if}}
+
+		<div class="search-result-social_links">
+			{{#if twitter_profile_id}}<a href="https://twitter.com/{{twitter_profile_id}}" title="Visit {{roleName}} {{name}}'s Twitter Profile" class="social-link-01 social-link-01-twitter" target="_blank"></a>{{/if}}
+			{{#if facebook_profile_id}}<a href="https://facebook.com/profile.php?id={{facebook_profile_id}}" title="Visit {{roleName}} {{name}}'s Facebook Profile" class="social-link-01 social-link-01-facebook" target="_blank"></a>{{/if}}
+			{{#if instagram_profile_id}}<a href="https://www.instagram.com/{{instagram_profile_id}}" title="Visit {{roleName}} {{name}}'s Instagram Profile" class="social-link-01 social-link-01-instagram" target="_blank"></a>{{/if}}
+			{{#if linkedin_profile_id}}<a href="https://linkedin.com/in/{{linkedin_profile_id}}" title="Visit {{roleName}} {{name}}'s LinkedIn Profile" class="social-link-01 social-link-01-linkedin" target="_blank"></a>{{/if}}
+		</div>
+	</div>
+
+	<div class="search-result-actions column small-12 medium-3">
+		<div class="search-result-sidelist">
+			<h4 class="search-result-sidelist-title">Opportunities:</h4>
+			<ul>
+				<li>Job</li>
+				<li>Consulting</li>
+				<li>Speaker</li>
+				<li>Work For Me</li>
+			</ul>
+		</div>
+		<a href="#" class="search-result-action">Connect</a>
+	</div>
+
+	<div class="clear">&nbsp;</div>
+</div>

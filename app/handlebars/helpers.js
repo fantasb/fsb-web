@@ -35,31 +35,58 @@ module.exports = function(_, util){ return {
 		return comparators[operator](val1,val2) ? opts.fn(this) : opts.inverse(this);
 	}
 
+	// If x && y && z && ...
+	,ifa: function(){
+		var i = 0
+		while (i < arguments.length-1) {
+			if (!arguments[i]) return arguments[arguments.length-1].inverse(this);
+			++i;
+		}
+		return arguments[arguments.length-1].fn(this);
+	}
+
+	// If x || y || z || ...
+	,ifo: function(){
+		var i = 0
+		while (i < arguments.length-1) {
+			if (arguments[i]) return arguments[arguments.length-1].fn(this);
+			++i;
+		}
+		return arguments[arguments.length-1].inverse(this);
+	}
+
+	,join: function(joinWhat, withWhat, startIndex, maxCount, ellipsis, propKey){
+		var result, items, i, undef;
+		items = joinWhat.slice(startIndex||0, typeof maxCount == 'number' ? startIndex+maxCount : undef);
+		if (propKey) {
+			for (i=0;i<items.length;++i) {
+				items[i] = items[i][propKey];
+			}
+		}
+		result = items.join(withWhat);
+		if (ellipsis && joinWhat.length-maxCount-startIndex > 0) {
+			result += ellipsis;
+		}
+		return result;
+	}
+
+	,incr: function(v,opts){
+		return opts.fn(+v + 1);
+	}
+
+	,padZ: function(n,m,opts){
+		if (typeof opts == 'undefined') {
+			opts = m;
+			m = 2;
+		}
+		while ((n+'').length < m) n = '0'+n;
+		return n;
+	}
+
 
 /* @todo: translate these as needed
-	# If x && y && z && ...
-	ifa: () ->
-		i = 0
-		while i < arguments.length-1
-			if !arguments[i]
-				return arguments[arguments.length-1].inverse this
-			++i
-		arguments[arguments.length-1].fn this
-
-	# If x || y || z || ...
-	ifo: () ->
-		i = 0
-		while i < arguments.length-1
-			if arguments[i]
-				return arguments[arguments.length-1].fn this
-			++i
-		arguments[arguments.length-1].inverse this
-
 	time: ->
 		return +new Date
-
-	incr: (v, opts) ->
-		opts.fn (+v + 1)
 
 	forEachInRange: (array, min=1, max, options) ->
 		if typeof array isnt 'object' or Array.isArray(array) is false
@@ -93,12 +120,6 @@ module.exports = function(_, util){ return {
 		_.each attrs, (v,k) ->
 			tagAttrs.push 'x-'+k+'="'+v+'"'
 		return tagAttrs.join ' '
-
-	padZ: (v, n, options) ->
-		# padZ(14, 4) == '0014'
-		while ((v+'').length < n)
-			v = '0'+v
-		return v
 
 	urlEncode: (v, useInsteadOfReturn, opts) ->
 		if !opts
