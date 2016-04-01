@@ -8,30 +8,48 @@ module.exports = {
 
 	index: function(req,res){
 		var z = this
-			,viewData = {
-				title: config.siteName+' - Find Trusted Talent'
-				,appendBrandToTitleTag: false
+		,roleName = req.params.query || 'ios-developer'
+		,viewData = {
+			title: config.siteName+' - Find Trusted Talent'
+			,appendBrandToTitleTag: false
+			,search: {
+				roleOptions: [
+					{value:'ios-developer', label:'iOS Developer'}
+					,{value:'recruiter', label:'Recruiter'}
+					,{value:'exotic-dancer', label:'Exotic Dancer'}
+				]
+				,roleOptionsDefault: roleName
+				,subroleOoptions: []
 			}
+		}
+		,role = null
 		;
-		//console.log('HOME CONTROLLER!!!', 'index', res.locals);
-		viewData.search = {
-			roleOptions: [
-				{value:1, label:'iOS Developer'}
-				,{value:2, label:'Recruiter'}
-				,{value:3, label:'Exotic Dancer'}
-			]
-			,roleOptionsDefault: 1
-			,subroleOoptions: []
-		};
-		viewData.search.roleName = _.findWhere(viewData.search.roleOptions, {value:viewData.search.roleOptionsDefault}).label;
 
-		api('results',{role_id:viewData.search.roleOptionsDefault},function(err,data){
-			if (err || !Array.isArray(data&&data.candidates)) {
-				throw new Error(err || 'unexpected response from api');
+		api('role',{name:roleName},function(err,data){
+			if (err) {
+				// @todo: #seo Throw 404 if err is not found
+				throw new Error(err);
 			}
-			viewData.search.results = data.candidates;
-			res.render(res.locals.template, viewData);
+			role = data;
+
+			viewData.search.roleName = role.display_name;
+			if (req.params.query) {
+				viewData.title = 'Top '+role.display_name+'s in Los Angeles, CA';
+				viewData.appendBrandToTitleTag = true;
+			}
+
+			next();
 		});
+
+		function next(){
+			api('results',{role_id:role.id},function(err,data){
+				if (err || !Array.isArray(data&&data.candidates)) {
+					throw new Error(err || 'unexpected response from api');
+				}
+				viewData.search.results = data.candidates;
+				res.render(res.locals.template, viewData);
+			});
+		}
 
 	}
 

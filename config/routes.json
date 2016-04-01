@@ -6,8 +6,19 @@
     "controller": "home",
     "action": "index",
     "template": "home/home-page",
-    "xscripts": [
-      "main-homepage"
+    "scripts": [
+      "main-home"
+    ]
+  },
+
+  {
+  	"key": "rank",
+  	"path": "/search/:query",
+  	"controller": "home",
+  	"action": "index",
+  	"template": "home/home-page",
+    "scripts": [
+      "main-home"
     ]
   },
 
