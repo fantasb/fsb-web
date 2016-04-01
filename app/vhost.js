@@ -115,7 +115,8 @@ exports.create = function(platform, appName, opts){
 		sext(app.locals,config.locals);
 	}
 	//app.locals.config = config;
-	app.locals.title = config.siteTitle;
+	app.locals.title = config.siteName;
+	app.locals.appendBrandToTitleTag = true;
 	app.locals.protocol = config.https ? 'https' : 'http';
 	app.locals.pkgVersion = require(process.cwd()+'/package.json').version;
 	// END Global View Data

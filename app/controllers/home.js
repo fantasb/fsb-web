@@ -1,5 +1,6 @@
 
 var api = require('../helpers/api.js')
+,config = require('../../config.js')
 ,_ = require('underscore')
 ;
 
@@ -7,7 +8,10 @@ module.exports = {
 
 	index: function(req,res){
 		var z = this
-			,viewData = {}
+			,viewData = {
+				title: config.siteName+' - Find Trusted Talent'
+				,appendBrandToTitleTag: false
+			}
 		;
 		//console.log('HOME CONTROLLER!!!', 'index', res.locals);
 		viewData.search = {
@@ -16,7 +20,7 @@ module.exports = {
 				,{value:2, label:'Recruiter'}
 				,{value:3, label:'Exotic Dancer'}
 			]
-			,roleOptionsDefault: 2
+			,roleOptionsDefault: 1
 			,subroleOoptions: []
 		};
 		viewData.search.roleName = _.findWhere(viewData.search.roleOptions, {value:viewData.search.roleOptionsDefault}).label;
