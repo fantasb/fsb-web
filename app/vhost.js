@@ -18,6 +18,7 @@ var util = require('./helpers/util.js')
 ,metaTagMiddleware = require('./middleware/metatags.js')
 ,Routes = require('./routes-provider.js')
 ,HBS = require('./handlebars')
+,pkgVersion = require('../package.json').version
 
 
 exports.create = function(platform, appName, opts){
@@ -34,7 +35,7 @@ exports.create = function(platform, appName, opts){
 	app.set('platform', platform);
 	app.set('app root', platform.get('app root'));
 	app.set('app path', basePath);
-	app.set('views', path.join(basePath, 'views'));
+	app.set('views', platform.get('views'));
 	//app.set('shared views', path.join(basePath, 'views'));
 	//app.set('platform views', platform.get('views'));
 	app.set('config', config);
@@ -118,7 +119,7 @@ exports.create = function(platform, appName, opts){
 	app.locals.title = config.siteName;
 	app.locals.appendBrandToTitleTag = true;
 	app.locals.protocol = config.https ? 'https' : 'http';
-	app.locals.pkgVersion = require(process.cwd()+'/package.json').version;
+	app.locals.pkgVersion = pkgVersion;
 	// END Global View Data
 
 

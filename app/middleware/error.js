@@ -19,7 +19,7 @@ function fetchStaticFiles(viewpath){
 
 module.exports = function(viewpath){
 	var error = {}
-	viewpath = viewpath || path.join(process.cwd(),'app/views/error');
+	viewpath = viewpath || path.join(__dirname+'/..','views/error');
 	var templates = fetchStaticFiles(viewpath);
 
 	return function(err,req,res,next){

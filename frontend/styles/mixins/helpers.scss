@@ -25,12 +25,12 @@
 }
 
 @mixin calc($attribute, $expression, $fallback) {
-	$attribute: $fallback;
-	$attribute: -webkit-calc($expression);
-	$attribute: expression($expression);
-	$attribute: -moz-calc($expression);
-	$attribute: -o-calc($expression);
-	$attribute: calc($expression);
+	#{$attribute}: #{$fallback};
+	#{$attribute}: -webkit-calc(#{$expression});
+	#{$attribute}: expression(#{$expression});
+	#{$attribute}: -moz-calc(#{$expression});
+	#{$attribute}: -o-calc(#{$expression});
+	#{$attribute}: calc(#{$expression});
 }
 
 

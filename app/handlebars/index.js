@@ -52,7 +52,7 @@ HBS.prototype.loadPartialsDirectory = function(dir,partials){
 HBS.prototype.loadPartials = function(app){
 	var z = this;
 	// backend-only partials...
-	var partials = z.loadPartialsDirectory(path.join(app.get('app path'),'views'));
+	var partials = z.loadPartialsDirectory(app.get('views'));
 	// shared partials...
 	if (app.get('app root')) partials = z.loadPartialsDirectory(path.join(app.get('app root'),'shared/views'), partials);
 	_.each(partials,function(data,key){
@@ -141,29 +141,16 @@ HBS.prototype.__express = function(filename, options, cb){
 		return renderWithLayout(layoutTemplate, options, cb);
 	}
 
-	// @todo: check if layout path has .hbs extension
-	var pathToTry = path.join(viewDir, layoutFilename);
-	fs.readFile(pathToTry, 'utf8', function(err,str){
+	var layoutPath = path.join(viewDir, layoutFilename);
+	fs.readFile(layoutPath, 'utf8', function(err,str){
 		if (err) {
-			pathToTry = path.join(process.cwd()+'/views', layoutFilename);
-			fs.readFile(pathToTry, 'utf8', function(err,str){
-				if (err) {
-					if (layout) return cb(err);
-					return renderFile(options,cb);
-				}
-				layoutTemplate = handlebars.compile(str);
-				if (options.cache) {
-					cache[layoutFilename] = layoutTemplate;
-				}
-				renderWithLayout(layoutTemplate, options, cb);
-			});
-		} else {
-			layoutTemplate = handlebars.compile(str);
-			if (options.cache) {
-				cache[layoutFilename] = layoutTemplate;
-			}
-			renderWithLayout(layoutTemplate, options, cb);
+			return cb(err);
 		}
+		layoutTemplate = handlebars.compile(str);
+		if (options.cache) {
+			cache[layoutFilename] = layoutTemplate;
+		}
+		renderWithLayout(layoutTemplate, options, cb);
 	});
 }
 

@@ -13,7 +13,7 @@
 	border: 1px solid #ccc;
 
 	select {
-		@include calc('width', '100% + 28px', '120%'); // #xbrowser
+		@include calc('width', '100% + 28px', '107%'); // #xbrowser
 		background: transparent;
 		padding: 0 0 0 0.8em;
 		border: 0;

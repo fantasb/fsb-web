@@ -22,7 +22,7 @@ module.exports = function(opTask, cb){
 	var task = opTask || gulpTask ||
 		//((env == 'development' || env == 'test') ? 'dev-nocss' : 'default');
 		((env == 'development' || env == 'test') ? 'dev' : 'default');
-	var child = cp.exec(process.cwd()+'/node_modules/.bin/gulp '+task, cb);
+	var child = cp.exec(__dirname+'/../node_modules/.bin/gulp '+task, cb);
 
 	console.log('Gulp Task: ', task);
 

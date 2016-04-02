@@ -11,7 +11,7 @@ var _ = require('underscore')
 ,vhost = require('./vhost.js')
 ,exec = require('child_process').exec
 ,async = require('async')
-,pkg = require(process.cwd()+'/package.json')
+,pkg = require('../package.json')
 ,gulp = require('./gulp.js')
 //,flush = require('./flush.js') // @todo: Expose route to flush app/cache.js if ends up being used
 ;
@@ -22,6 +22,7 @@ var _ = require('underscore')
 // --------------------------------------------------------------
 var config = require('../config.js')
 ,routesConfig = require('../config/routes.json')
+,repoPath = path.normalize(__dirname+'/..')
 ;
 
 
@@ -30,10 +31,10 @@ var config = require('../config.js')
 // --------------------------------------------------------------
 var app = express();
 app.set('port', process.env.PORT || +config.http.port || 3000);
-app.set('app root', process.cwd());
-app.set('path', process.cwd() + '/app');
-app.set('public', process.cwd() + '/public');
-app.set('views', path.join(process.cwd(),'views'));
+app.set('app root', repoPath);
+app.set('path', repoPath + '/app');
+app.set('public', repoPath + '/public');
+app.set('views', repoPath + '/app/views');
 app.set('routesConfig', routesConfig);
 app.set('config', config);
 
