@@ -45,8 +45,8 @@ HBS.prototype.loadPartialsDirectory = function(dir,partials){
 				}
 			});
 		});
-		return partials;
 	}
+	return partials;
 }
 
 HBS.prototype.loadPartials = function(app){
