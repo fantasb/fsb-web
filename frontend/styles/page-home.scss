@@ -1,5 +1,6 @@
 
-.page-home {
+//.page-home, .page-rank { // created common parent class to save on css space #performance
+.ranked-page {
 	.main-2col-left {
 		padding-right: 0.9375rem;
 	}
