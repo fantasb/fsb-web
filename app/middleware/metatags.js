@@ -4,9 +4,9 @@
 //			 module, but things to add: append / prepend, overwrite tag
 //
 var path = require('path')
-,routesConfig = require(process.cwd()+'/config/routes')
+,routesConfig = require(process.cwd()+'/config/routes.json')
 ,_ = require('underscore')
-,util = require('../helpers/util')
+,util = require('../helpers/util.js')
 ;
 
 module.exports = function(options){
