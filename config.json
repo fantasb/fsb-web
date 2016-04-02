@@ -5,7 +5,7 @@
 	"https": false,
 	"siteName": "Ranktt",
 	"fullDomain": "www.ranktt.com",
-	"vhost": "*.com",
+	"vhost": "*",
 	"workerTimeout": 5000,
 	"socketTimeout": 30000,
 	"toobusyMaxLag": 1000,
