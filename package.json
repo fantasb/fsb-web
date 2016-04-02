@@ -6,8 +6,6 @@
 	"author": "alec",
 	"dependencies": {
 		"async": "0.1.22",
-		"babel-preset-react": "~6.5.0",
-		"babelify": "~7.2.0",
 		"express": "3.5.1",
 		"file": "0.2.1",
 		"handlebars": "2.0.0",
