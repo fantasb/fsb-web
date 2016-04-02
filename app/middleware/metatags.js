@@ -4,7 +4,7 @@
 //			 module, but things to add: append / prepend, overwrite tag
 //
 var path = require('path')
-,routesConfig = require(process.cwd()+'/config/routes.json')
+,routesConfig = require('../../config/routes.json')
 ,_ = require('underscore')
 ,util = require('../helpers/util.js')
 ;
