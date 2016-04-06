@@ -9,6 +9,7 @@ module.exports = {
 	index: function(req,res){
 		var z = this
 		,roleName = req.params.query || 'ios-developer'
+		,pagLimit = 5
 		,viewData = {
 			title: config.siteName+' - Find Trusted Talent'
 			,appendBrandToTitleTag: false
@@ -42,7 +43,7 @@ module.exports = {
 		});
 
 		function next(){
-			api('results',{role_id:role.id},function(err,data){
+			api('results',{role_id:role.id,offset:0,limit:pagLimit},function(err,data){
 				if (err || !Array.isArray(data&&data.candidates)) {
 					throw new Error(err || 'unexpected response from api');
 				}
