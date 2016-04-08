@@ -7,7 +7,7 @@ function Search($cont){
 	z.$ = {
 		cont: $cont
 		,results: $cont.find('div.search-results')
-		,controls: $cont.find('.search-controls')
+		,controls: $cont.find('div.search-controls')
 	};
 
 	z.functionalize();
@@ -20,7 +20,7 @@ Search.prototype.functionalize = function(){
 Search.prototype.initControls = function(){
 	var z = this;
 	// DEMO main-home search functionality
-	z.$.controls.find('.search-control-role select').bind('change',function(){
+	z.$.controls.find('div.search-control-role select').bind('change',function(){
 		var v = $(this).val();
 		if (v) {
 			window.location = '/search/'+v;
