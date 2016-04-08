@@ -4,6 +4,11 @@ var api = require('../helpers/api.js')
 ,_ = require('underscore')
 ;
 
+// @todo: replace with api call
+var defaultSearchOptions = {
+
+}
+
 module.exports = {
 
 	index: function(req,res){
@@ -20,7 +25,9 @@ module.exports = {
 					,{value:'exotic-dancer', label:'Exotic Dancer'}
 				]
 				,roleOptionsDefault: roleName
-				,subroleOoptions: []
+				,subroleOptions: []
+				,pagOffset: 0
+				,pagLimit: pagLimit
 			}
 		}
 		,role = null
@@ -33,6 +40,7 @@ module.exports = {
 			}
 			role = data;
 
+			viewData.search.roleId = role.id;
 			viewData.search.roleName = role.display_name;
 			if (req.params.query) {
 				viewData.title = 'Top '+role.display_name+'s in Los Angeles, CA';
@@ -52,6 +60,32 @@ module.exports = {
 			});
 		}
 
+	}
+
+	,searchResultsPartial: function(req,res){
+		if (!(req.query.role_id && req.query.offset && req.query.limit && +req.query.limit <= 10)) {
+			throw new Error('Invalid Input');
+		}
+		var search = {
+			roleId: +req.query.role_id
+			,pagOffset: +req.query.offset
+			,pagLimit: +req.query.limit
+			,dontWrap: true
+			,noResultsCopy: 'Result limit reached'
+		};
+		res.locals.layout = false;
+		api('results',{
+			role_id: search.roleId
+			,offset: search.pagOffset
+			,limit: search.pagLimit
+		},function(err,data){
+			if (err || !Array.isArray(data&&data.candidates)) {
+				throw new Error(err || 'unexpected response from api');
+			}
+			search.results = data.candidates;
+			//setTimeout(function(){res.render('partials/search-results', search);},2000);
+			res.render('partials/search-results', search);
+		});
 	}
 
 	,demo: function(req,res){

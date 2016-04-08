@@ -7,19 +7,26 @@
     "action": "index",
     "template": "home/home-page",
     "scripts": [
-      "main-home"
+      "main-search"
     ]
   },
 
   {
-  	"key": "rank",
+  	"key": "search",
   	"path": "/search/:query",
   	"controller": "home",
   	"action": "index",
   	"template": "home/home-page",
     "scripts": [
-      "main-home"
+      "main-search"
     ]
+  },
+
+  {
+  	"key": "search-results-partial",
+  	"path": "/search-results-partial",
+  	"controller": "home",
+  	"action": "searchResultsPartial"
   },
 
   {

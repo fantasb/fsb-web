@@ -13,6 +13,13 @@ var comparators = {
 	'>=': function(a,b){ return a >= b; },
 	'typeof': function(a,b){ return typeof a == b; }
 };
+var maths = {
+	'+': function(a,b){ return a+b; },
+	'-': function(a,b){ return a-b; },
+	'*': function(a,b){ return a*b; },
+	'/': function(a,b){ return a/b; },
+	'^': function(a,b){ return Math.pow(a,b); }
+};
 
 // @todo: refactor passing refs as args. we're working with effing node and browserify here
 module.exports = function(_, util){ return {
@@ -31,8 +38,8 @@ module.exports = function(_, util){ return {
 
 	//,toLowerCase: function(v){ return v.toLowerCase(); }
 
-	,if_: function(val1, operator, val2, opts){
-		return comparators[operator](val1,val2) ? opts.fn(this) : opts.inverse(this);
+	,if_: function(val1, comparator, val2, opts){
+		return comparators[comparator](val1,val2) ? opts.fn(this) : opts.inverse(this);
 	}
 
 	// If x && y && z && ...
@@ -53,6 +60,11 @@ module.exports = function(_, util){ return {
 			++i;
 		}
 		return arguments[arguments.length-1].inverse(this);
+	}
+
+	,math: function(val1, operator, val2, opts){
+		var result = maths[operator](val1,val2);
+		return (opts && opts.fn) ? opts.fn(result) : result;
 	}
 
 	,join: function(joinWhat, withWhat, startIndex, maxCount, ellipsis, propKey){

@@ -1,11 +1,14 @@
 
 {{!-- From JS: `Handlebars.partials['search-results']([{prop1:123},{prop1:456}])` --}}
-<div class="search-results">
+{{#unless dontWrap}}<div class="search-results">{{/unless}}
 	{{#if results.[0]}}
 		{{#each results}}
-			{{> search-result this roleName=../roleName index=@index}}
+			{{> search-result this roleName=../roleName index=@index pagOffset=../pagOffset}}
 		{{/each}}
+		{{#if_ results.length '==' pagLimit}}
+			<a class="search-results-showmore" href="#" x-offset="{{math pagOffset '+' pagLimit}}" x-limit="{{pagLimit}}">Show More Results</a>
+		{{/if_}}
 	{{else}}
-		<div class="search-results-none">No results found</div>
+		<div class="search-results-none">{{#if noResultsCopy}}{{noResultsCopy}}{{else}}No results found{{/if}}</div>
 	{{/if}}
-</div>
+{{#unless dontWrap}}</div>{{/unless}}

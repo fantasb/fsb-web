@@ -19,6 +19,34 @@
 	text-align: center;
 	padding: 8vh 1vw 16vh 1vw;
 }
+.search-results-error {
+	clear: both;
+	margin-bottom: 4vh; // match .search-result
+	text-align: center;
+}
+.search-results-showmore-loader {
+	clear: both;
+	margin-bottom: 4vh; // match .search-result
+	height: 15px;
+	background: url(/images/ajaxloader-02-92cac6.gif) no-repeat center center;
+}
+a.search-results-showmore {
+	display: block;
+	clear: both;
+	font-size: 12px;
+	letter-spacing: 0.1em;
+	color: #000;
+	text-transform: uppercase;
+	text-align: center;
+	padding: 0.8em 0.8em;
+	border: 1px solid #000;
+	margin: 0 0 0.5em 0;
+}
+a.search-results-showmore:hover {
+	background-color: rgba(0,0,0,0.1);
+	//background-color: $linkColor;
+	//color: #fff;
+}
 .search-result {
 	margin-bottom: 4vh;
 }
