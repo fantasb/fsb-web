@@ -16,6 +16,7 @@
 - Style ace
 	- ace.pop default bar color
 	- ace.* font-family?
+- Compress libs.css
 - Deprecate bower if not using
 	- package.json / bower.json / etc
 - Finish metatags middleware refactor
