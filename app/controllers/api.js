@@ -22,7 +22,7 @@ module.exports = {
 		// @todo: write to db
 		// @todo: send notif to slack?
 
-		require('../helpers/send_email.js')('founders@ranktt.com', 'Candidate Interest', JSON.stringify(data), function(err,data){
+		require('../helpers/send_email.js')('tech@ranktt.com', 'Candidate Interest', JSON.stringify(data), function(err,data){
 			if (err) {
 				console.log('ERROR',err);
 				return error(120,'Error sending email',req,res);

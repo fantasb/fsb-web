@@ -144,6 +144,10 @@ var Connect = AceBase.extend({
 			}
 		});
 	}
+	,showSuccess: function(){
+		var z = this;
+		z.$.cont.find('div.results-contact-inlay-wrap').html('<div class="results-contact-inlay-status">Message Sent!</div>');
+	}
 	,submit: function(){
 		var z = this, data;
 		if (z.submitting) return;
@@ -157,9 +161,10 @@ var Connect = AceBase.extend({
 			z.submitting = false;
 			if (err) {
 				ace.util.stdErrAlert();
+				//z.trigger('submit-error',err)
 				return console.log('ERROR',err);
 			}
-			//z.showSuccess();
+			z.showSuccess();
 			//z.trigger('submit',data);
 		});
 	}
