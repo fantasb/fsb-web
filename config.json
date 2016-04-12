@@ -19,11 +19,11 @@
 	},
 	"twitter": {
 	},
-	"aws": {
-		"accessKeyId": "",
-		"secretAccessKey": "",
-		"region": "us-east-1"
-	},
+	"awsAccessKey": "",
+	"awsAccessSecret": "",
+	"awsRegion": "us-east-1",
+	"mailTransport": "ses",
+	"sesMailFrom": "test@test.com",
 	"logging": {
 		"loggly": {
 			"subdomain": "",

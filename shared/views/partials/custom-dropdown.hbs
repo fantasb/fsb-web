@@ -1,0 +1,19 @@
+
+<div class="custom-dropdown {{class}}">
+	<select {{#if name}}name="{{name}}"{{/if}}>
+		{{#if placeholder}}
+			{{#if placeholder.label}}
+				<option value="{{placeholder.value}}">{{placeholder.label}}</option>
+			{{else}}
+				<option value="">{{placeholder}}</option>
+			{{/if}}
+		{{/if}}
+		{{#each items}}
+			{{#if_ this 'typeof' 'object'}}
+				<option value="{{value}}" {{#if_ value '==' ../default}}selected="selected"{{/if_}}>{{label}}</option>
+			{{else}}
+				<option value="{{this}}" {{#if_ this '==' ../default}}selected="selected"{{/if_}}>{{this}}</option>
+			{{/if_}}
+		{{/each}}
+	</select>
+</div>

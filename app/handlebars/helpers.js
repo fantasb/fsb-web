@@ -21,7 +21,7 @@ var maths = {
 	'^': function(a,b){ return Math.pow(a,b); }
 };
 
-// @todo: refactor passing refs as args. we're working with effing node and browserify here
+// @todo: refactor passing refs as args. we're working with effing node and browserify here #reqFix01
 module.exports = function(_, util){ return {
 	uniq: function(){return util.uniq.apply(util,arguments)}
 	,luniq: function(){return util.luniq.apply(util,arguments)}

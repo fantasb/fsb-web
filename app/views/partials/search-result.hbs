@@ -1,5 +1,5 @@
 
-<div class="search-result columns">
+<div class="search-result columns" x-id="{{id}}" x-name="{{name}}">
 	{{!-- Note: Remove pagOffset passing from search-results when this switches to being powered by api percentiles --}}
 	<div class="search-result-place column small-1 medium-1">{{#math index '+' pagOffset}}{{#incr this}}{{padZ this}}{{/incr}}{{/math}}</div>
 
@@ -55,7 +55,7 @@
 				<li>Work For Me</li>
 			</ul>
 		</div>
-		<a href="#" class="search-result-action">Connect</a>
+		<a href="#" class="search-result-action search-result-action-connect btn01">Connect</a>
 	</div>
 
 	<div class="clear">&nbsp;</div>

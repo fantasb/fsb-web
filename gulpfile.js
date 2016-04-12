@@ -37,6 +37,11 @@ var  production = false;
 var libsBase = './public/libs';
 var libFiles = [
 	libsBase+'/jquery/dist/jquery.js'
+	,libsBase+'/ace/ace.js'
+	,libsBase+'/ace/ace.loader.js'
+	,libsBase+'/ace/ace.pop.js'
+	,libsBase+'/ace/ace.req.js'
+	,libsBase+'/ace/ace.init.js'
 	,libsBase+'/fastclick/lib/fastclick.js'
 	//,libsBase+'/jquery.cookie/jquery.cookie.js'
 	//,libsBase+'/jquery-placeholder/jquery.placeholder.js'
@@ -74,7 +79,11 @@ var libFiles = [
 	//,libsBase+'/foundation/js/foundation/foundation.slider.js'
 	//,libsBase+'/foundation/js/foundation/foundation.tooltip.js"
 ];
-
+var libCss = [
+	libsBase+'/ace/ace.css'
+	,libsBase+'/ace/ace.loader.css'
+	,libsBase+'/ace/ace.pop.css'
+];
 
 
 
@@ -167,6 +176,9 @@ gulp.task('templates', function(){
 
 // concatenate all external libraries into one file
 gulp.task('libs', function(){
+	gulp.src(libCss).pipe(concat('libs.css'))
+		.pipe(gulp.dest('public/compiled/'))
+	;
 	return gulp.src(libFiles)
 		.pipe(concat('libs.js'))
 		.pipe(gulp.dest('public/compiled/'))
@@ -244,7 +256,7 @@ gulp.task('uglifyjs', function(){
 // compile sass
 gulp.task('css', function(){
 	//var stream = gulp.src(['frontend/styles/main.scss', 'frontend/styles/solo-homepage.scss'])
-	var stream = gulp.src(['frontend/styles/main.scss'])
+	var stream = gulp.src(['frontend/styles/main.scss']) // @todo: split libs css into separate file like libs.js
 		.on('error', notify.onError({
 			message: 'SASS error :: <%= error.message %>'
 			,title: 'JavaScript Error'

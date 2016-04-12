@@ -11,6 +11,8 @@
 		"handlebars": "2.0.0",
 		"lru-halfexpired": "0.0.2",
 		"minimist": "1.1.1",
+		"nodemailer": "1.4.0",
+		"nodemailer-ses-transport": "1.3.0",
 		"qs": "5.1.0",
 		"replify": "~1.1.4",
 		"sext": "0.1.6",

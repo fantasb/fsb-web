@@ -13,6 +13,9 @@
 - Fix gulp watch for default development user
 	- Not picking up partials?
 - Configure winston to use `log/`
+- Style ace
+	- ace.pop default bar color
+	- ace.* font-family?
 - Deprecate bower if not using
 	- package.json / bower.json / etc
 - Finish metatags middleware refactor

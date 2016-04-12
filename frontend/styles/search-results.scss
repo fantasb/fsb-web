@@ -31,21 +31,8 @@
 	background: url(/images/ajaxloader-02-92cac6.gif) no-repeat center center;
 }
 a.search-results-showmore {
-	display: block;
 	clear: both;
-	font-size: 12px;
-	letter-spacing: 0.1em;
-	color: #000;
-	text-transform: uppercase;
-	text-align: center;
-	padding: 0.8em 0.8em;
-	border: 1px solid #000;
 	margin: 0 0 0.5em 0;
-}
-a.search-results-showmore:hover {
-	background-color: rgba(0,0,0,0.1);
-	//background-color: $linkColor;
-	//color: #fff;
 }
 .search-result {
 	margin-bottom: 4vh;
@@ -121,19 +108,64 @@ a.search-results-showmore:hover {
 a.search-result-action {
 	display: block;
 	font-size: 12px;
-	letter-spacing: 0.1em;
-	color: #000;
-	text-transform: uppercase;
-	text-align: center;
-	padding: 0.8em 0.8em;
-	border: 1px solid #000;
 	margin: 0 0 0.5em 0;
 }
-a.search-result-action:hover {
-	background-color: rgba(0,0,0,0.1);
-	//background-color: $linkColor;
-	//color: #fff;
+.results-contact-inlay {
+	clear: both;
+	padding: 10px 0 0 0;
+	background: url(/images/inlayarrow-01-up.png) no-repeat 89.5% 0;
+	margin-bottom: 4vh; // match .search-result
 }
+.results-contact-inlay-wrap {
+	background: #ededee;
+	padding: 4vh 4vw;
+	border-bottom: 1px solid #bfbfbf;
+}
+.results-contact-inlay-prompt {
+	@extend .font-main-medium;
+	text-align: center;
+	color: #465a6d;
+	margin-bottom: 1em;
+	margin-bottom: 1em;
+}
+.results-contact-inlay-opts {
+	padding-bottom: 1em;
+	border-bottom: 1px solid #b2b2b2;
+	margin-bottom: 1em;
+}
+// BEGIN clear .columns padding
+.results-contact-inlay-opts {
+	padding-left: 0;
+	padding-right: 0;
+}
+.results-contact-inlay-opts >.column:first-child {
+	padding-left: 0;
+	margin-left: 0;
+}
+.results-contact-inlay-opts >.column:last-child {
+	padding-right: 0;
+	margin-right: 0;
+}
+@media #{$small-only} {
+	.results-contact-inlay-opts >.column {
+		padding-left: 0;
+		padding-right: 0;
+		margin-left: 0;
+		margin-right: 0;
+	}
+}
+// END clear .columns padding
+.results-contact-inlay-opts .custom-dropdown
+,.results-contact-inlay-opts input {
+	width: 100%;
+}
+.results-contact-inlay-actions {
+	text-align: center;
+}
+a.results-contact-inlay-action {
+	display: inline-block;
+}
+
 
 @media (max-width: 1075px) {
 	.search-result-place {

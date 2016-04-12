@@ -6,7 +6,7 @@
 			{{> search-result this roleName=../roleName index=@index pagOffset=../pagOffset}}
 		{{/each}}
 		{{#if_ results.length '==' pagLimit}}
-			<a class="search-results-showmore" href="#" x-offset="{{math pagOffset '+' pagLimit}}" x-limit="{{pagLimit}}">Show More Results</a>
+			<a class="search-results-showmore btn01" href="#" x-offset="{{math pagOffset '+' pagLimit}}" x-limit="{{pagLimit}}">Show More Results</a>
 		{{/if_}}
 	{{else}}
 		<div class="search-results-none">{{#if noResultsCopy}}{{noResultsCopy}}{{else}}No results found{{/if}}</div>

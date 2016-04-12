@@ -1,39 +1,74 @@
 [
 
-  {
-    "key": "home",
-    "path": "/",
-    "controller": "home",
-    "action": "index",
-    "template": "home/home-page",
-    "scripts": [
-      "main-search"
-    ]
-  },
+	{
+		"key": "home",
+		"path": "/",
+		"controller": "home",
+		"action": "index",
+		"template": "home/home-page",
+		"scripts": [
+			"main-search"
+		]
+	},
 
-  {
-  	"key": "search",
-  	"path": "/search/:query",
-  	"controller": "home",
-  	"action": "index",
-  	"template": "home/home-page",
-    "scripts": [
-      "main-search"
-    ]
-  },
+	{
+		"key": "search",
+		"path": "/search/:query",
+		"controller": "home",
+		"action": "index",
+		"template": "home/home-page",
+		"scripts": [
+			"main-search"
+		]
+	},
 
-  {
-  	"key": "search-results-partial",
-  	"path": "/search-results-partial",
-  	"controller": "home",
-  	"action": "searchResultsPartial"
-  },
+	{
+		"key": "search-results-partial",
+		"path": "/search-results-partial",
+		"controller": "home",
+		"action": "searchResultsPartial"
+	},
 
-  {
-  	"key": "demo",
-  	"path": "/demo",
-  	"controller": "home",
-  	"action": "demo"
-  }
+	{
+		"key": "api-contact-candidate",
+		"path": "/api/contact-candidate",
+		"method": "post",
+		"controller": "api",
+		"action": "contactCandidate",
+		"middleware": [
+			"raw-body"
+		],
+		"noCharacterCaseRedirect": true,
+		"noTrailingSlashRedirect": true
+	},
+
+	{
+		"key": "api",
+		"path": "/api*",
+		"controller": "api",
+		"action": "index",
+		"noCharacterCaseRedirect": true,
+		"noTrailingSlashRedirect": true
+	},
+
+	{
+		"key": "api",
+		"path": "/api*",
+		"controller": "api",
+		"action": "index",
+		"middleware": [
+			"raw-body"
+		],
+		"method": "post",
+		"noCharacterCaseRedirect": true,
+		"noTrailingSlashRedirect": true
+	},
+
+	{
+		"key": "demo",
+		"path": "/demo",
+		"controller": "home",
+		"action": "demo"
+	}
 
 ]

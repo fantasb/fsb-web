@@ -28,3 +28,63 @@ input:-ms-input-placeholder {color:#999; font-style:italic; text-transform:none 
 	// default whitespace for footer, meant to be overridden when appropriate
 	margin-bottom: $whitespaceVertical1;
 }
+
+
+a.btn01 {
+	display: block;
+	font-size: 12px;
+	letter-spacing: 0.1em;
+	color: #000;
+	text-transform: uppercase;
+	text-align: center;
+	padding: 0.8em 2.4em;
+	border: 1px solid #000;
+	margin: 0 0 0.5em 0;
+}
+a.btn01:hover {
+	background-color: rgba(0,0,0,0.1);
+	//background-color: $linkColor;
+	//color: #fff;
+}
+a.btn02 {
+	display: block;
+	font-size: 12px;
+	letter-spacing: 0.1em;
+	color: #fff;
+	text-transform: uppercase;
+	text-align: center;
+	background: #465a6d;
+	padding: 0.8em 2.4em;
+	border: 1px solid #465a6d;
+	margin: 0 0 0.5em 0;
+}
+a.btn02:hover {
+	// @todo
+}
+.input01, input.input01 {
+	display: inline-block;
+	background: #fff;
+	border: 1px solid #ccc;
+	min-width: 14em;
+	font-size: 16px;
+	line-height: 1.3;
+	margin-bottom: 0.35em; // attempt to match 1.5 line-height
+}
+.input01.has-error {
+	//background-color: #ffe5e5;
+	background-color: #fcc;
+}
+.input01::-webkit-input-placeholder { font-style: normal; color: inherit; }
+.input01:-moz-placeholder { font-style: normal; color: inherit; }
+.input01::-moz-placeholder { font-style: normal; color: inherit; }
+.input01:-ms-input-placeholder { font-style: normal; color: inherit; }
+.input01::placeholder { font-style: normal; color: inherit; }
+input.input01, select.input01 {
+	padding: 0 0 0 0.8em;
+	height: 2.8em;
+}
+textarea.input01 {
+	padding: 0.8em;
+	height: 11.2em;
+}
+
