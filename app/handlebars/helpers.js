@@ -95,6 +95,18 @@ module.exports = function(_, util){ return {
 		return n;
 	}
 
+	,date: function(format,date,opts){
+		// @todo: build out as needed
+		if (typeof opts == 'undefined') {
+			opts = date;
+			date = new Date;
+		}
+		if (!(date instanceof Date)) {
+			date = new Date(date);
+		}
+		return format.replace('Y',date.getFullYear());
+	}
+
 
 /* @todo: translate these as needed
 	time: ->

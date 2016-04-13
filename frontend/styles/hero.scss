@@ -6,6 +6,7 @@
 	padding-bottom: $whitespaceVertical1;
 	border-bottom: 1px solid #bfbfbf;
 	margin-bottom: $whitespaceVertical1;
+	text-align: center;
 }
 .hero-bg {
 	background-repeat: no-repeat;
@@ -16,12 +17,11 @@
 	position: relative;
 }
 .hero-content {
-	margin: 0 auto;
-	width: 408px;
+	display: inline-block;
+	min-width: 408px;
 	max-width: 90%;
 	background: #fff;
 	padding: #{$whitespaceVertical1 * 2};
-	text-align: center;
 }
 .hero-title0 {
 	@extend .font-main-light;
