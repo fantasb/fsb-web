@@ -45,6 +45,9 @@
 	line-height: 1.5;
 }
 @media #{$small-only} {
+	.hero-content {
+		min-width: 0;
+	}
 	.hero-title0 {
 		font-size: 16px;
 	}
