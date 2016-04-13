@@ -58,6 +58,12 @@
 				margin-bottom: 0;
 			}
 		}
+
+		// give some vertical whitespace to sidebar that just became main content
+		.main-2col-right {
+			margin-top: $whitespaceVertical2;
+		}
+
 	}
 
 	@media (max-width: 548px) {
