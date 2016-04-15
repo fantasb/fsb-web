@@ -23,6 +23,14 @@
 	},
 
 	{
+		"key": "rubric",
+		"path": "/rubric",
+		"controller": "home",
+		"action": "rubric",
+		"template": "home/rubric"
+	},
+
+	{
 		"key": "search-results-partial",
 		"path": "/search-results-partial",
 		"controller": "home",

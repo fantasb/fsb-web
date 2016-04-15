@@ -1,0 +1,105 @@
+.rubric-infographic {
+}
+.rubric-infographic-factor {
+	// 820x133
+	width: 100%;
+	max-width: 820px;
+	height: 0;
+	//padding: 0 0 16.2195122% 0;
+	padding: 0 0 15.98% 0; // tested real calced height in chrome at all screen widths
+	overflow: visible;
+	background-position: left top;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+
+	color: #fff;
+	letter-spacing: 0.08em;
+}
+.rubric-infographic-factor-0 { background-image: url(/images/rubric01-tab-01.png); }
+.rubric-infographic-factor-1 { background-image: url(/images/rubric01-tab-02.png); }
+.rubric-infographic-factor-2 { background-image: url(/images/rubric01-tab-03.png); }
+.rubric-infographic-factor-3 { background-image: url(/images/rubric01-tab-04.png); }
+.rubric-infographic-factor-4 { background-image: url(/images/rubric01-tab-05.png); }
+.rubric-infographic-factor-5 { background-image: url(/images/rubric01-tab-06.png); }
+// @todo: make more colors for 6+
+.rubric-infographic-factor-6 { background-image: url(/images/rubric01-tab-01.png); }
+.rubric-infographic-factor-7 { background-image: url(/images/rubric01-tab-02.png); }
+.rubric-infographic-factor-8 { background-image: url(/images/rubric01-tab-03.png); }
+.rubric-infographic-factor-9 { background-image: url(/images/rubric01-tab-04.png); }
+.rubric-infographic-factor-10 { background-image: url(/images/rubric01-tab-05.png); }
+.rubric-infographic-factor-11 { background-image: url(/images/rubric01-tab-06.png); }
+// BEGIN hack to hide previous tab shadow
+.rubric-infographic-factor-0 { background-image: url(/images/rubric01-tab-01-noshad.png) }
+// END hack to hide previous tab shadow
+.rubric-infographic-factor-weight {
+	float: left;
+	width: 27.56%;
+	padding-top: 4%;
+	text-align: center;
+	line-height: 1;
+}
+.rubric-infographic-factor-weight-pretitle {
+	@extend .font-main-light;
+	font-size: 1.5vw;
+	text-transform: uppercase;
+}
+.rubric-infographic-factor-weight-value {
+	@extend .font-main-medium;
+	font-size: 4vw;
+}
+.rubric-infographic-factor-desc {
+	float: left;
+	margin-left: 2.683%;
+	padding: 2.4% 0 0 2%;
+	width: 42%;
+}
+.rubric-infographic-factor-desc-name {
+	@extend .font-main-regular;
+	font-size: 1.5vw;
+	text-transform: uppercase;
+	margin-bottom: 0.5em;
+	white-space: nowrap;
+}
+.rubric-infographic-factor-desc-details {
+	@extend .font-main-light;
+	font-size: 1vw;
+}
+.rubric-infographic-factor-icon {
+	//float: right;
+	// instead, force position so we dont get weird wraps when scaling
+	position: absolute;
+	right: 0;
+	top: 0;
+
+	width: 20.8%;
+	margin: 3.5% 0;
+	padding: 1.2% 6% 1.5% 0;
+	border-left: 1px solid #fff;
+	text-align: center;
+}
+.rubric-infographic-factor-icon img {
+	width: 40%;
+}
+/* control img by style rather than img name...
+.rubric-infographic-factor-icon img {
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+.rubric-infographic-factor-basic_education .rubric-infographic-factor-icon img { background-image: url(/images/rubric01-icon-lightbulb.png); }
+*/
+
+@media #{$small-only} {
+	.rubric-infographic-factor-weight-value {
+		font-size: 5.5vw;
+	}
+	.rubric-infographic-factor-desc-name {
+		font-size: 2vw;
+		margin-bottom: 0.2em;
+	}
+	.rubric-infographic-factor-desc-details {
+		font-size: 1.5vw;
+	}
+}
+

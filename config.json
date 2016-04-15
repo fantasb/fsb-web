@@ -15,10 +15,8 @@
 		"endpoint": "http://127.0.0.1:3001/api/",
 		"basicAuthKey": null
 	},
-	"facebook": {
-	},
-	"twitter": {
-	},
+	"facebookAppId": 111979992242630,
+	"twitterAppId": null,
 	"awsAccessKey": "",
 	"awsAccessSecret": "",
 	"awsRegion": "us-east-1",

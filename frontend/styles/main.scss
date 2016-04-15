@@ -40,6 +40,7 @@ $mobile-menu-line-height: rem-calc(47);//3.5rem;
 @import "custom-dropdown.scss";
 @import "search-controls.scss";
 @import "search-results.scss";
+@import "rubric-infographic.scss";
 
 
 /*--------------------------------
@@ -49,5 +50,7 @@ $mobile-menu-line-height: rem-calc(47);//3.5rem;
 ----------------------------------*/
 
 @import "page-home.scss";
+@import "page-rubric.scss";
+
 
 

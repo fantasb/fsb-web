@@ -88,8 +88,21 @@ module.exports = {
 		});
 	}
 
+	,rubric: function(req,res){
+		var viewData = {
+			title: 'Rubric'
+		};
+		api('factors',function(err,data){
+			if (err || !Array.isArray(data)) {
+				throw new Error(err || 'unexpected response from api');
+			}
+			viewData.factors = data;
+			res.render(res.locals.template, viewData);
+		});
+	}
+
 	,demo: function(req,res){
-		var z = this, viewOpts = {};
+		var z = this, viewData = {};
 		res.render('sup', viewData);
 	}
 

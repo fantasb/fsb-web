@@ -10,3 +10,14 @@
 <script src="{{../cdnJsUrl}}/compiled/{{this}}.js?v={{../pkgVersion}}"></script>
 {{/each}}
 
+{{!-- BEGIN Facebook SDK --}}
+<script>
+if (window.__config__.facebookAppId) {
+	window.ranktt.fb.loadSdk({
+		appId: window.__config__.facebookAppId
+		,version: 'v2.1'
+		,xfbml: true
+	});
+}
+</script>
+{{!-- END Facebook SDK --}}

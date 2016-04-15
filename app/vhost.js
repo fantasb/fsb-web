@@ -116,7 +116,7 @@ exports.create = function(platform, appName, opts){
 		sext(app.locals,config.locals);
 	}
 	//app.locals.config = config;
-	app.locals.title = config.siteName;
+	app.locals.siteName = config.siteName;
 	app.locals.appendBrandToTitleTag = true;
 	app.locals.protocol = config.https ? 'https' : 'http';
 	app.locals.pkgVersion = pkgVersion;
@@ -159,9 +159,7 @@ exports.create = function(platform, appName, opts){
 		<script>\
 			window.__config__ = {\
 				env: "'+process.env.NODE_ENV+'"\
-				,facebookAppId: "'+config.facebook.appid+'"\
-				,facebookFanPage: "'+config.facebook.page+'"\
-				,twitterHandle: "'+config.twitter.key+'"\
+				,facebookAppId: "'+config.facebookAppId+'"\
 			};\
 		</script>\
 	');

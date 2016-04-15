@@ -1,0 +1,15 @@
+<div class="rubric-infographic">
+	{{#each factors}}
+		<div class="rubric-infographic-factor rubric-infographic-factor-{{@index}} rubric-infographic-factor-{{name}}">
+			<div class="rubric-infographic-factor-weight">
+				<div class="rubric-infographic-factor-weight-pretitle">Weight</div>
+				<div class="rubric-infographic-factor-weight-value">{{weight}}</div>
+			</div>
+			<div class="rubric-infographic-factor-desc">
+				<div class="rubric-infographic-factor-desc-name">{{display_name}}</div>
+				<div class="rubric-infographic-factor-desc-details">{{description}}</div>
+			</div>
+			<div class="rubric-infographic-factor-icon"><img src="/images/rubric01-icon-{{name}}.png" alt="" /></div>
+		</div>
+	{{/each}}
+</div>

@@ -1,5 +1,5 @@
 
-ace.components.MainNav = {
+ranktt.ui.MainNav = {
 	config: {
 	}
 	,$: {}
@@ -42,6 +42,6 @@ ace.components.MainNav = {
 
 $(function(){
 	var $header = $('#header');
-	ace.components.MainNav.init($header.find('.nav-toggle-target'), $header.find('a.nav-toggle'));
+	ranktt.ui.MainNav.init($header.find('.nav-toggle-target'), $header.find('a.nav-toggle'));
 });
 

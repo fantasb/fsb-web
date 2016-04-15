@@ -1,0 +1,41 @@
+
+{{>hero title1="Algorithm Breakdown" title2="Contribute to the science"}}
+
+<div class="main-content columns">
+
+	<div class="main-2col-left column medium-9">
+		
+		<div class="content-sec">
+			<h2>What does Ranktt consider?</h2>
+			{{> rubric-infographic factors=factors}}
+		</div>
+
+		<div class="content-sec">
+			<h2>Step 1: Scoring</h2>
+			<p>Candidates are assigned a raw score for each Role-Factor. For example, Joe Smith might have a <i>Skill Fundamentals</i> score of <b>15</b> for the Role <i>iOS Developer</i>, but a score of <b>2</b> when ranktted as an <i>Exotic Dancer</i>.</p>
+			<p>We attempt to keep the data fresh by re-scoring each Candidate when we notice a change in their world.</p>
+		</div>
+
+		<div class="content-sec">
+			<h2>Step 2: Ranking</h2>
+			<p>When a Role is queried, we calculate each Candidate's percentile within each Role-Factor, then add them up to generate a total Role-Score.</p>
+			<p>
+				<img src="https://upload.wikimedia.org/math/8/5/2/8526c6898b75e1fef90d2923eb8dc6ce.png" />
+			</p>
+		</div>
+
+		<div class="content-sec">
+			<h2>Contribute</h2>
+			<p>What factors do you use when choosing the optimal Candidate?</p>
+			{{!-- If have trouble with FB response, try adding class "fb-comments-responsive" (ace override) --}}
+			<div class="fb-comments" data-href="http://www.ranktt.com/rubric" data-width="100%" data-numposts="5" data-colorscheme="light"></div>
+		</div>
+
+	</div>
+
+	<div class="main-2col-right column medium-3">
+		{{> sidebar}}
+	</div>
+
+	<div class="clear">&nbsp;</div>
+</div>

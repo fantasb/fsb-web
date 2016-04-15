@@ -27,6 +27,35 @@ input:-ms-input-placeholder {color:#999; font-style:italic; text-transform:none 
 
 	// default whitespace for footer, meant to be overridden when appropriate
 	margin-bottom: $whitespaceVertical1;
+
+	.main-2col-left {
+		padding-right: 0.9375rem;
+	}
+	.main-2col-right {
+		float: right;
+	}
+
+	img.SAMPLE-sidebar-content {
+		margin-bottom: 5vh;
+	}
+
+	@media #{$small-only} {
+		img.SAMPLE-sidebar-content {
+			width: 48%;
+			margin: 0 0.8% 2.4% 0.8%;
+		}
+		// give some vertical whitespace to sidebar that just became main content
+		.main-2col-right {
+			margin-top: $whitespaceVertical2;
+		}
+	}
+
+	@media (max-width: 548px) {
+		img.SAMPLE-sidebar-content {
+			margin: 0 0.6% 2.4% 0.6%;
+		}
+	}
+
 }
 
 
