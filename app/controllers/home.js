@@ -22,7 +22,6 @@ module.exports = {
 				roleOptions: [
 					{value:'ios-developer', label:'iOS Developer'}
 					,{value:'recruiter', label:'Recruiter'}
-					,{value:'exotic-dancer', label:'Exotic Dancer'}
 				]
 				,roleOptionsDefault: roleName
 				,subroleOptions: []
