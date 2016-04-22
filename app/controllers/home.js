@@ -18,7 +18,7 @@ module.exports = {
 		,viewData = {
 			title: config.siteName+' - Find Trusted Talent'
 			,appendBrandToTitleTag: false
-			,title0: 'Crowdranktted'
+			,title0: 'ranktt.com'
 			,title1: 'Top Experts in Los Angeles'
 			,title2: 'Talent updated daily'
 			,search: {
