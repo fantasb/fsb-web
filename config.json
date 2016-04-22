@@ -22,7 +22,7 @@
 	"awsAccessSecret": "",
 	"awsRegion": "us-east-1",
 	"mailTransport": "ses",
-	"sesMailFrom": "test@test.com",
+	"sesMailFrom": "no-reply@ranktt.com",
 	"logging": {
 		"loggly": {
 			"subdomain": "",
