@@ -65,6 +65,14 @@
 	@extend .font-main-light;
 	font-size: 1vw;
 }
+.rubric-infographic-factor-example {
+	display: block; // is a span, break the line
+	font-style: italic;
+	margin-top: 0.2em;
+}
+.rubric-infographic-factor-example-prefix {
+	margin-right: 0.5em;
+}
 .rubric-infographic-factor-icon {
 	//float: right;
 	// instead, force position so we dont get weird wraps when scaling

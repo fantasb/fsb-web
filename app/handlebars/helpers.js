@@ -2,6 +2,8 @@
 // Handlebar template helpers
 //
 
+var Handlebars = require('handlebars');
+
 var comparators = {
 	'==': function(a,b){ return a == b; },
 	'===': function(a,b){ return a === b; },
@@ -105,6 +107,14 @@ module.exports = function(_, util){ return {
 			date = new Date(date);
 		}
 		return format.replace('Y',date.getFullYear());
+	}
+
+	,parseRubricMarkup: function(val,opts){
+		val = Handlebars.Utils.escapeExpression(val);
+		// [ex]Example value[/ex]
+		// Hardcoding prefix instead of using CSS :before for SEO
+		val = val.replace(/\[ex\](.*)\[\/ex\]/g, '<span class="rubric-infographic-factor-example"><span class="rubric-infographic-factor-example-prefix">Ex:</span>$1</span>');
+		return new Handlebars.SafeString(val);;
 	}
 
 
