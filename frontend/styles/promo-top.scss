@@ -11,3 +11,8 @@
 	// @todo: multiline center worth it?
 	padding: 12px 0;
 }
+@media #{$small-only} {
+	.promo-top {
+		font-size: 14px;
+	}
+}

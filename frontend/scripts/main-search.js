@@ -109,7 +109,8 @@ var Connect = AceBase.extend({
 	$: {}
 	,defaultOpts: {
 		purposeOpts: {
-			items: ['General Inquire', 'Vague Inquire', 'Non Sequitur Inquire', 'Demonstrative']
+			//items: ['General Inquire', 'Vague Inquire', 'Non Sequitur Inquire', 'Demonstrative']
+			items: ['Mentorship', 'Speaker', 'Consulting', 'Job Offer']
 		}
 	}
 	,init: function(opts){

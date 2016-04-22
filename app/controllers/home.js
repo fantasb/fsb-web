@@ -18,6 +18,9 @@ module.exports = {
 		,viewData = {
 			title: config.siteName+' - Find Trusted Talent'
 			,appendBrandToTitleTag: false
+			,title0: 'Crowdranktted'
+			,title1: 'Top Experts in Los Angeles'
+			,title2: 'Talent updated daily'
 			,search: {
 				roleOptions: [
 					{value:'ios-developer', label:'iOS Developer'}
@@ -44,6 +47,7 @@ module.exports = {
 			if (req.params.query) {
 				viewData.title = 'Top '+role.display_name+'s in Los Angeles, CA';
 				viewData.appendBrandToTitleTag = true;
+				viewData.title1 = 'Top '+role.display_name+'s in Los Angeles';
 			}
 
 			next();
