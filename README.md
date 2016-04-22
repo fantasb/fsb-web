@@ -1,5 +1,14 @@
-# fsb-web
+# ranktt-web
 
+
+
+### Set Env
+App defaults to "development" in index.js
+```shell
+export NODE_ENV=production
+export NODE_ENV=development
+...
+```
 
 
 

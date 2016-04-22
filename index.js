@@ -1,5 +1,5 @@
 // default to 'development' environment
-if(process.env && !process.env.NODE_ENV) {
+if (process.env && !process.env.NODE_ENV) {
   process.env.NODE_ENV = 'development';
 }
 

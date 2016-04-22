@@ -82,27 +82,27 @@ exports.create = function(platform, appName, opts){
 	// END Prevent Choke
 
 
-	// BEGIN Site Down
-	// If enabling this
-	//  (1) consider configOverrides
-	//  (2) refine errorHandler() logic
-	//app.use(function(req,res,next){
-	//	if (config.isDown) {
-	//		//app.use(errorHandler());
-	//		res.statusCode = 500;
-	//		return next(new Error('Site isDown.'));
-	//	}
-	//	next();
-	//});
-	// END Site Down
-
-
 	// Manage long-lived connections
 	app.use(keepalive());
 
 
 	// GZip this bitch
 	app.use(express.compress());
+
+
+	// BEGIN Site Down
+	// @todo: https://trello.com/c/TdO3tZCA/97-update-sitedown-functionality-to-use-configoverrides-middleware-so-we-don-t-need-a-server-restart-security-durability
+	//  (1) Updateable via non-local config change rather than server restart; implement configOverrides; move isDown check into middleware
+	//  (2) Refine errorHandler() logic
+	app.use(function(req,res,next){
+		if (config.isDown) {
+			res.statusCode = 503;
+			next(new Error('isDown'));
+		} else {
+			next();
+		}
+	});
+	// END Site Down
 
 
 	app.use(cacheHeaders(2592000,true)); // Cache everything below this for a month

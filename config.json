@@ -1,4 +1,5 @@
 {
+	"isDown": false,
 	"http": {
 		"port": 3000
 	},
