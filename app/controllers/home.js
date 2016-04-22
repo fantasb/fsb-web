@@ -86,6 +86,7 @@ module.exports = {
 				throw new Error(err || 'unexpected response from api');
 			}
 			search.results = data.candidates;
+			// test loader graphic:
 			//setTimeout(function(){res.render('partials/search-results', search);},2000);
 			res.render('partials/search-results', search);
 		});
@@ -102,6 +103,13 @@ module.exports = {
 			viewData.factors = data;
 			res.render(res.locals.template, viewData);
 		});
+	}
+
+	,contact: function(req,res){
+		var viewData = {
+			title: 'Contact Us'
+		};
+		res.render(res.locals.template, viewData);
 	}
 
 	,demo: function(req,res){

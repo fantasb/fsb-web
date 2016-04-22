@@ -31,6 +31,14 @@
 	},
 
 	{
+		"key": "contact",
+		"path": "/contact",
+		"controller": "home",
+		"action": "contact",
+		"template": "home/contact"
+	},
+
+	{
 		"key": "search-results-partial",
 		"path": "/search-results-partial",
 		"controller": "home",
