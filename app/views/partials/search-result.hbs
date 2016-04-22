@@ -4,7 +4,7 @@
 	<div class="search-result-place column small-1 medium-1">{{#math index '+' pagOffset}}{{#incr this}}{{padZ this}}{{/incr}}{{/math}}</div>
 
 	<div class="search-result-pic column small-5 medium-3">
-		<img src="{{#if linkedin_img_url}}{{linkedin_img_url}}{{else}}/images/profilephoto-default-01.png{{/if}}" alt="{{roleName}} {{name}}" />
+		<img src="{{linkedInImageUrl linkedin_img_url '200x200'}}" alt="{{roleName}} {{name}}" />
 	</div>
 
 	<div class="search-result-info column small-6 medium-5">

@@ -109,6 +109,12 @@ module.exports = function(_, util){ return {
 		return format.replace('Y',date.getFullYear());
 	}
 
+	,linkedInImageUrl: function(url,size,opts){
+		var defaultImg = '/images/profilephoto-default-01.png';
+		if (!url) return defaultImg;
+		return url.replace(/shrinknp_[0-9]+_[0-9]+/,'shrinknp_'+size.replace('x','_'));
+	}
+
 	,parseRubricMarkup: function(val,opts){
 		val = Handlebars.Utils.escapeExpression(val);
 		// [ex]Example value[/ex]
