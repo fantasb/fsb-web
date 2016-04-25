@@ -216,4 +216,9 @@ a.results-contact-inlay-action {
 		margin-right: 0.5em;
 		&:before { display:none; }
 	}
+	.social-link-01 {
+		zoom: 0.7;
+		-moz-transform: scale(0.7);
+		-moz-transform-origin: 0 0;
+	}
 }
