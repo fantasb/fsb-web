@@ -9,7 +9,7 @@
 }
 .promo-top-content {
 	// @todo: multiline center worth it?
-	padding: 12px 0;
+	padding: $whitespaceVertical1 $whitespaceVertical2;
 }
 @media #{$small-only} {
 	.promo-top {
