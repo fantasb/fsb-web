@@ -11,6 +11,8 @@
 #
 
 
+echo 'This is just a placeholder atm';exit
+
 while getopts 'c:r' opt; do
 	case $opt in
 		c)
