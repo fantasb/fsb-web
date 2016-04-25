@@ -32,7 +32,7 @@
 		{{/if}}{{/if}}
 
 		{{#if skills}}{{#if skills.[0]}}
-			<div class="search-result-skills">
+			<div class="search-result-skills show-for-medium-up">
 				{{join skills ', ' 0 5 '...' 'display_name'}}
 			</div>
 		{{/if}}{{/if}}
@@ -44,6 +44,15 @@
 			{{#if linkedin_profile_id}}<a href="https://linkedin.com/in/{{linkedin_profile_id}}" title="Visit {{roleName}} {{name}}'s LinkedIn Profile" class="social-link-01 social-link-01-linkedin" target="_blank"></a>{{/if}}
 		</div>
 	</div>
+
+	
+	{{#if skills}}{{#if skills.[0]}}
+		<div class="column small-12 show-for-small-only">
+			<div class="search-result-skills">
+				{{join skills ', ' 0 5 '...' 'display_name'}}
+			</div>
+		</div>
+	{{/if}}{{/if}}
 
 	<div class="search-result-actions column small-12 medium-3">
 		<div class="search-result-sidelist">

@@ -9,7 +9,7 @@
 			margin-left: 0;
 			padding-left: 0;
 		}
-		>.column:nth-child(4) {
+		>.column:nth-child(5) {
 			margin-right: 0;
 			padding-right: 0;
 		}
@@ -196,9 +196,11 @@ a.results-contact-inlay-action {
 @media #{$small-only} {
 	.search-results {
 		>.columns {
-			>.column:nth-child(4) {
+			>.column:nth-child(4), >.column:nth-child(5), >.column:nth-child(6) {
 				margin-left: 0;
 				padding-left: 0;
+				margin-right: 0;
+				padding-right: 0;
 			}
 		}
 	}
