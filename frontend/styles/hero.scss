@@ -59,3 +59,17 @@
 		font-size: 14px;
 	}
 }
+@media (max-width: 470px) {
+	.hero-title0 {
+		font-size: 14px;
+	}
+	h1.hero-title1 {
+		font-size: 20px;
+	}
+	.hero-subtitle {
+		font-size: 12px;
+	}
+	.hero-content {
+		padding: $whitespaceVertical1;
+	}
+}
