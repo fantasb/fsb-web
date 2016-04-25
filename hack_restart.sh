@@ -5,7 +5,7 @@
 
 killall node
 killall gulp
-if [ "$1" == "-r" ];
+if [ "$1" == "-r" ]; then
 	export NODE_ENV=
 else
 	export NODE_ENV=production
