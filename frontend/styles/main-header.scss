@@ -27,6 +27,18 @@
 		font-size: inherit;
 		text-transform: inherit;
 	}
+
+	// BEGIN "beta"
+	h1::after {
+		content: 'beta';
+		font-size: 0.3em;
+		vertical-align: top;
+		position: relative;
+		left: 0.1em;
+		color: #666;
+		letter-spacing: 0.07em;
+	}
+	// END "beta"
 }
 .main-header-subtitle {
 	@extend .font-main-light;
