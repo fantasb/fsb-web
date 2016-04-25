@@ -15,13 +15,13 @@
 		{{#if work_history_items}}{{#if work_history_items.[0]}}
 			<div class="search-result-title">
 				<h3 class="search-result-subtitle">
-					{{#ifa work_history_items.[0].title work_history_items.[0].company_name}}
-						<span class="search-result-subtitle-title">{{work_history_items.[0].title}}</span> at <span class="search-result-subtitle-company">{{work_history_items.[0].company_name}}</span>
+					{{#ifa work_history_items.[0].title work_history_items.[0].company_display_name}}
+						<span class="search-result-subtitle-title">{{work_history_items.[0].title}}</span> at <span class="search-result-subtitle-company">{{work_history_items.[0].company_display_name}}</span>
 					{{else}}
 						{{#if work_history_items.[0].title}}
 							<span class="search-result-subtitle-title">{{work_history_items.[0].title}}</span>
 						{{else}}
-							<span class="search-result-subtitle-company">{{work_history_items.[0].company_name}}</span>
+							<span class="search-result-subtitle-company">{{work_history_items.[0].company_display_name}}</span>
 						{{/if}}
 					{{/ifa}}
 				</h3>
