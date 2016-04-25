@@ -53,6 +53,7 @@
 	margin-left: 2.683%;
 	padding: 2.4% 0 0 2%;
 	width: 42%;
+	height: 100%; // helps fix text overflow breaking styles
 }
 .rubric-infographic-factor-desc-name {
 	@extend .font-main-regular;
@@ -108,6 +109,16 @@
 	}
 	.rubric-infographic-factor-desc-details {
 		font-size: 1.5vw;
+	}
+	.rubric-infographic-factor-icon {
+		display: none;
+	}
+	.rubric-infographic-factor-desc {
+		width: 63%;
+	}
+	.rubric-infographic-factor-example {
+		white-space: nowrap;
+		overflow: visible;
 	}
 }
 
