@@ -13,13 +13,14 @@ module.exports = {
 		,viewData = {
 			title: config.siteName+' - Find Trusted Talent'
 			,appendBrandToTitleTag: false
-			,title0: 'ranktt.com'
+			//,title0: 'ranktt.com'
 			,title1: 'Top Experts in Los Angeles' // leaving "Experts" for now cuz is Homepage and could have diff focus
 			,title2: 'Talent updated daily'
 			,search: {
 				roleOptions: []
 				,roleOptionsDefault: roleName
-				,subroleOptions: []
+				,subroleOptions: [{label:'Coming soon...',value:''}]
+				,locationOptions: [{label:'Los Angeles, CA',value:'Los Angeles, CA'}, {label:'More coming soon...',value:''}]
 				,pagOffset: 0
 				,pagLimit: pagLimit
 			}
@@ -37,6 +38,8 @@ module.exports = {
 					,label: r.display_name
 				});
 			});
+			// "coming soon"...
+			viewData.search.roleOptions.push({label:'More coming soon...',value:''});
 
 			api('role',{name:roleName},function(err,data){
 				if (err) {
@@ -50,6 +53,8 @@ module.exports = {
 				if (req.params.query) {
 					viewData.title = 'Top '+role.display_name+'s in Los Angeles, CA';
 					viewData.appendBrandToTitleTag = true;
+					viewData.title1 = 'Top '+role.display_name+'s in Los Angeles';
+				} else if (role) {
 					viewData.title1 = 'Top '+role.display_name+'s in Los Angeles';
 				}
 

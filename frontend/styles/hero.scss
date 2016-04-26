@@ -73,3 +73,10 @@
 		padding: $whitespaceVertical1;
 	}
 }
+@media (max-width: 380px) {
+	h1.hero-title1 {
+		white-space: normal;
+		line-height: 1.2;
+		margin-bottom: 0.15em;
+	}
+}
