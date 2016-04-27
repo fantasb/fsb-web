@@ -47,11 +47,12 @@ exports.create = function(platform, appName, opts){
 
 	// BEGIN enforce www
 	app.use(function(req,res,next){
-		if (config.enforceWww && !/^https?:\/\/www\./.test(req.url))
-			return res.redirect(req.url.replace(/(^https?:\/\/)/,'$1www.'),301);
+		if (config.enforceFullDomain && config.fullDomain && req.get('host') != config.fullDomain)
+			return res.redirect(req.protocol+'://'+config.fullDomain+(req.url=='/'?'':req.url), 301);
 		next();
 	});
 	// END enforce www
+
 	hbs.loadPartials(app);
 
 	// BEGIN Headers and Helpers
