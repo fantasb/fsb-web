@@ -6,6 +6,7 @@
 	"https": false,
 	"siteName": "Ranktt",
 	"fullDomain": "www.ranktt.com",
+	"enforceWww": true,
 	"vhost": "*",
 	"workerTimeout": 5000,
 	"socketTimeout": 30000,
