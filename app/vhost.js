@@ -45,19 +45,17 @@ exports.create = function(platform, appName, opts){
 	// hack so utils.js can use app.locals without passed ref
 	//waiter.set('app',app); // @todo: deprecate
 
-	// BEGIN enforce www
-	app.use(function(req,res,next){
-		if (config.enforceFullDomain && config.fullDomain && req.get('host') != config.fullDomain)
-			return res.redirect(req.protocol+'://'+config.fullDomain+(req.url=='/'?'':req.url), 301);
-		next();
-	});
-	// END enforce www
-
-	hbs.loadPartials(app);
 
 	// BEGIN Headers and Helpers
 	app.use(function(req,res,next){
-		util.resetUniq();
+		res.header('x-powered-by', 'rankttor'); // overwrite express to hide our tech
+
+		// BEGIN enforce www
+		if (config.enforceFullDomain && config.fullDomain && req.get('host') != config.fullDomain)
+			return res.redirect(req.protocol+'://'+config.fullDomain+(req.url=='/'?'':req.url), 301);
+		// END enforce www
+
+		//util.resetUniq();
 
 		// BEGIN performance: once-per-request
 		var _parsedUrl = null;
@@ -76,6 +74,7 @@ exports.create = function(platform, appName, opts){
 	});
 	// END Headers and Helpers
 
+	hbs.loadPartials(app);
 
 	// BEGIN Prevent Choke
 	app.use(function(req,res,next){
