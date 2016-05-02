@@ -12,6 +12,7 @@
 	"socketTimeout": 30000,
 	"toobusyMaxLag": 1000,
 	"cmsTtl": 900000,
+	"loadStylesAtTop": true,
 
 	"api": {
 		"endpoint": "http://127.0.0.1:3001/api/",

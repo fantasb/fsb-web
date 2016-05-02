@@ -9,7 +9,7 @@
 {{! Some browsers don't have console.log() }}
 <script>(function (){ var l = function(){}; if (typeof window.console === 'undefined') { window.console = { log: l, error: l, debug: l, info: l, warn: l }; } })();</script>
 
-{{> styles }}
+{{#if loadStylesAtTop}}{{> styles }}{{/if}}
 
 {{! Favicons and touch icons }}
 {{! For retina-display iPads }}

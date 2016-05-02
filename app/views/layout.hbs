@@ -15,5 +15,6 @@
 	<footer id="footer">{{>main-footer}}</footer>
 
 	{{> scripts }}
+	{{#unless loadStylesAtTop}}{{> styles }}{{/unless}}
 </body>
 </html>

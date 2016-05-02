@@ -127,6 +127,7 @@ exports.create = function(platform, appName, opts){
 	app.locals.appendBrandToTitleTag = true;
 	app.locals.protocol = config.https ? 'https' : 'http';
 	app.locals.pkgVersion = pkgVersion;
+	app.locals.loadStylesAtTop = config.loadStylesAtTop;
 	// END Global View Data
 
 
