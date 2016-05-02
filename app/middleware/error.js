@@ -31,7 +31,7 @@ module.exports = function(viewpath){
 		error.stack = err.stack;
 
 		// Capture the route for debugging purposes
-		error.route = "#{if req.method? then req.method.toUpperCase() else ''} #{req.url}"
+		error.route = (req.method ? req.method.toUpperCase() : '') + ' '+req.url;
 
 		// Default to error 500 if no error status was set
 		if (res.statusCode < 400 || res.statusCode > 599) {

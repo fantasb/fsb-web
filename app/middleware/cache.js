@@ -12,7 +12,7 @@ module.exports = function(seconds,mustRevalidate){
 			res.setHeader('Cache-Control', 'public, max-age=0, must-revalidate');
 		} else if (mustRevalidate) {
 			// Otherwise tell the browser to cache the content for awhile
-			res.setHeader('Cache-Control', 'public, max-age=#{seconds}, must-revalidate');
+			res.setHeader('Cache-Control', 'public, max-age='+seconds+', must-revalidate');
 		} else {
 			res.setHeader('Cache-Control', 'public, max-age='+seconds);
 			res.setHeader('Expires', (new Date(Date.now() + seconds*1000)).toUTCString());
