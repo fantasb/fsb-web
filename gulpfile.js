@@ -256,7 +256,7 @@ gulp.task('uglifyjs', function(){
 // compile sass
 gulp.task('css', function(){
 	//var stream = gulp.src(['frontend/styles/main.scss', 'frontend/styles/solo-homepage.scss'])
-	var stream = gulp.src(['frontend/styles/main.scss']) // @todo: split libs css into separate file like libs.js
+	var stream = gulp.src(['frontend/styles/main.scss','frontend/styles/libs.scss']) // @todo: split libs css into separate file like libs.js
 		.on('error', notify.onError({
 			message: 'SASS error :: <%= error.message %>'
 			,title: 'JavaScript Error'
@@ -274,6 +274,10 @@ gulp.task('css', function(){
 // make css ugly
 gulp.task('uglifycss', ['css'], function(){
 	if (!production) return;
+	gulp.src(['public/compiled/libs.css'])
+		.pipe(uglifycss({'max-line-len':80}))
+		.pipe(gulp.dest('public/compiled/'))
+	;
 	return gulp.src(['public/compiled/main.css'])
 		.pipe(uglifycss({'max-line-len':80}))
 		.pipe(gulp.dest('public/compiled/'))
@@ -286,7 +290,7 @@ gulp.task('uglifycss', ['css'], function(){
 // -------------------------------------------------------------------------------
 gulp.task('bless-css', ['uglifycss'], function(){
 	if (!production) return;
-	return gulp.src(['public/compiled/main.css'])
+	return gulp.src(['public/compiled/main.css','public/compiled/libs.css'])
 		.pipe(bless({
 			force: false
 			,cleanup: false
