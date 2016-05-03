@@ -6,6 +6,11 @@
 	letter-spacing: 0.08em;
 	text-transform: uppercase;
 	text-align: center;
+
+	a, a:hover {
+		text-decoration: none;
+		color: #fff;
+	}
 }
 .promo-top-content {
 	// @todo: multiline center worth it?
