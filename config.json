@@ -13,6 +13,7 @@
 	"toobusyMaxLag": 1000,
 	"cmsTtl": 900000,
 	"loadStylesAtTop": true,
+	"googleAnalyticsId": null,
 
 	"api": {
 		"endpoint": "http://127.0.0.1:3001/api/",

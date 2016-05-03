@@ -119,15 +119,15 @@ exports.create = function(platform, appName, opts){
 
 
 	// BEGIN Global View Data
-	if (typeof config.locals == 'object') {
-		sext(app.locals,config.locals);
-	}
+	// I prefer flat config flags for simple extension
+	//if (typeof config.locals == 'object') sext(app.locals,config.locals);
 	//app.locals.config = config;
 	app.locals.siteName = config.siteName;
 	app.locals.appendBrandToTitleTag = true;
 	app.locals.protocol = config.https ? 'https' : 'http';
 	app.locals.pkgVersion = pkgVersion;
 	app.locals.loadStylesAtTop = config.loadStylesAtTop;
+	app.locals.googleAnalyticsId = config.googleAnalyticsId; // @todo: #moveToTagManager
 	// END Global View Data
 
 
