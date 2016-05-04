@@ -14,6 +14,7 @@
 	"cmsTtl": 900000,
 	"loadStylesAtTop": true,
 	"googleAnalyticsId": null,
+	"googleSiteVerificationId": "yHL5RffECFWqT_3jspgbYaKv4HruDPzDWrQPzuGppB0",
 
 	"api": {
 		"endpoint": "http://127.0.0.1:3001/api/",
@@ -36,10 +37,7 @@
 		"defaultRouteTtl": 0,
 		"errorTtl": 10
 	},
-	"pagemetatags": {
-		"default": [
-			{"property":"og:site_name", "content":"Ranktt"},
-			{"name":"google-site-verification", "content":""}
-		]
-	}
+	"globalMetaTags": [
+		{"property":"og:site_name", "content":"Ranktt"}
+	]
 }

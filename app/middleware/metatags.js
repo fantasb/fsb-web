@@ -1,22 +1,24 @@
 //
 // Middleware function to allow management of metatags
-// @todo make more robust; this certainly will not be the final stage of this
-//			 module, but things to add: append / prepend, overwrite tag
 //
-var path = require('path')
-,routesConfig = require('../../config/routes.json')
-,_ = require('underscore')
+// Global metatags can be set via config.globalMetaTags
+// Route-specific metatags I prefer to set at controller only
+// 	Supporting in routes config ends up being too confusing re logic responsibility
+//
+var _ = require('underscore')
 ,util = require('../helpers/util.js')
+,config = require('../../config.js')
+,routesConfig = require('../../config/routes.json')
 ;
 
 module.exports = function(options){
 	if (!options || typeof options != 'object') options = {};
 
 	return function(req,res,next){
-		if (!res.locals.metatags) res.locals.metatags = '';
+		res.locals.metatags = '';
 
 		res.addMetaTag = function(props){
-			if (typeof props != 'object') return false;
+			if (typeof props != 'object' || !props) return false;
 			var metatag = [];
 			_.each(props,function(v,k){
 				if (typeof v != 'string') {
@@ -29,23 +31,25 @@ module.exports = function(options){
 		}
 
 		res.addMetaTags = function(metatags){
-			if (typeof metatags != 'object') return false;
+			if (typeof metatags != 'object' || !metatags) return false;
 			_.each(metatags,function(metatag){
 				res.addMetaTag(metatag);
 			});
 		}
 
-		// @todo: refactor this
-		// I used to explicitly call this in each controller method, but seems silly if we have per-route meta tags
-		res.makeMetaTags = function(pageCustomTags,pagePath){
-			if (typeof pagePath == 'undefined') pagePath = '';
-			return ''
+		res.addCanonicalUrl = function(url){
+      if (typeof url != 'string') return;
+      var canonicalUrl = url.indexOf('http://') == -1 ? 'http://'+url : url;
+      res.locals.metatags += '\n<link rel="canonical" href="'+canonicalUrl+'" />';
 		}
 
-		res.makeAbsoluteBaseUrl = function(){
+		var absoluteBaseUrl;
+		res.absoluteBaseUrl = function(){
 			// dont need to strip trailing slash, should be covered by redirect. @todo: confirm this
-			return 'http://'+res.app.locals.fullDomain+req.path;
+			return absoluteBaseUrl = (absoluteBaseUrl || util.absolutifyUrl(req.path));
 		}
+
+		res.addMetaTags(config.globalMetaTags);
 
 		next();
 	};

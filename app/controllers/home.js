@@ -63,6 +63,19 @@ module.exports = {
 						throw new Error(err || 'unexpected response from api: results');
 					}
 					viewData.search.results = data.candidates;
+
+					var description = 'Ranked Top Talent searchable by Role and Region'
+						,keywords = 'ranked talent, recruiting'
+					;
+					// @todo: Change description+keywords if on search results page instead of home #seo
+					res.addMetaTags([
+						{ name:'description', content:description },
+						{ name:'keywords', content:keywords },
+						{ property:'og:url', content:res.absoluteBaseUrl() },
+						{ property:'og:title', content:viewData.title }
+					]);
+					if (config.googleSiteVerificationId) res.addMetaTag({name:'google-site-verification', content:config.googleSiteVerificationId});
+
 					res.render(res.locals.template, viewData);
 				});
 			});
