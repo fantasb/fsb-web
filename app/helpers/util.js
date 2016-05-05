@@ -190,7 +190,8 @@ module.exports = {
 
 		res.locals.scripts = null;
 		res.statusCode = 404;
-		res.render('error/pretty-404',viewData);
+		//res.render('error/pretty-404',viewData);
+		res.render('error/404',viewData);
 	}
 
 	,reqIsFromFbScraper: function(req){
