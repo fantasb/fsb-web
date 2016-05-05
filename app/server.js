@@ -54,9 +54,10 @@ async.parallel({
 	tag: async.apply(exec,'git describe --tags')
 	,hash: async.apply(exec,'git rev-parse HEAD')
 	,branch: async.apply(exec,'git rev-parse --abbrev-ref HEAD')
+	,history: async.apply(exec,'git log --pretty=%s | head -n4')
 },function(err,results){
 	_.each(results,function(v,k){
-		app.set('git-'+k, (v[0]||'').replace(/\n/g,'; '));
+		app.set('git-'+k, (v[0]||'').replace(/\s+$/,'').replace(/\n/g,'; '));
 	});
 	app.emit('initialized');
 });
@@ -86,6 +87,7 @@ app.get('/id', function(req, res, next){
 		,api: config.api.endpoint || null
 		//,dependencies: pkg.dependencies || null
 		,appVersion: pkg.version || null
+		,history: app.get('git-history') || null
 	});
 });
 
