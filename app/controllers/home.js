@@ -130,6 +130,13 @@ module.exports = {
 		res.render(res.locals.template, viewData);
 	}
 
+	,privacyPolicy: function(req,res){
+		var viewData = {
+			title: 'Privacy Policy'
+		};
+		res.render(res.locals.template, viewData);
+	}
+
 	,demo: function(req,res){
 		var z = this, viewData = {};
 		res.render('sup', viewData);

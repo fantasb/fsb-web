@@ -39,6 +39,14 @@
 	},
 
 	{
+		"key": "privacy-policy",
+		"path": "/privacy-policy",
+		"controller": "home",
+		"action": "privacyPolicy",
+		"template": "legal/privacy-policy"
+	},
+
+	{
 		"key": "search-results-partial",
 		"path": "/search-results-partial",
 		"controller": "home",
