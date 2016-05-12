@@ -1,0 +1,19 @@
+
+{{>hero title0=title0 title1=title1 title2=title2}}
+
+<div class="main-content columns ranked-page">
+
+	<div class="main-2col-left column medium-9">
+		<ul class="list1">
+			{{#each roles}}
+				<li class="list1-item"><a class="list1-item-link" href="/search/{{name}}/los-angeles-ca">{{display_name}} - Los Angeles, CA</a></li>
+			{{/each}}
+		</ul>
+	</div>
+
+	<div class="main-2col-right column medium-3">
+		{{>sidebar}}
+	</div>
+
+	<div class="clear">&nbsp;</div>
+</div>

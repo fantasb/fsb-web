@@ -8,7 +8,7 @@ module.exports = {
 
 	index: function(req,res){
 		var z = this
-		,roleName = req.params.query || 'ios-developer'
+		,roleName = req.params.role || 'ios-developer'
 		,pagLimit = 5
 		,viewData = {
 			title: config.siteName+' - Find Trusted Talent'
@@ -20,7 +20,7 @@ module.exports = {
 				roleOptions: []
 				,roleOptionsDefault: roleName
 				,subroleOptions: [{label:'Coming soon...',value:''}]
-				,locationOptions: [{label:'Los Angeles, CA',value:'Los Angeles, CA'}, {label:'More coming soon...',value:''}]
+				,locationOptions: [{label:'Los Angeles, CA',value:'los-angeles-ca'}, {label:'More coming soon...',value:''}]
 				,pagOffset: 0
 				,pagLimit: pagLimit
 			}
@@ -50,7 +50,7 @@ module.exports = {
 
 				viewData.search.roleId = role.id;
 				viewData.search.roleName = role.display_name;
-				if (req.params.query) {
+				if (req.params.role) {
 					viewData.title = 'Top '+role.display_name+'s in Los Angeles, CA';
 					viewData.appendBrandToTitleTag = true;
 					viewData.title1 = 'Top '+role.display_name+'s in Los Angeles';
@@ -67,7 +67,10 @@ module.exports = {
 					var description = 'Ranked Top Talent searchable by Role and Region'
 						,keywords = 'ranked talent, recruiting'
 					;
-					// @todo: Change description+keywords if on search results page instead of home #seo
+					if (req.params.role) {
+						description += ' - '+role.display_name+', Los Angeles, CA';
+						keywords += ', '+role.display_name+', Los Angeles, CA';
+					}
 					res.addMetaTags([
 						{ name:'description', content:description },
 						{ name:'keywords', content:keywords },

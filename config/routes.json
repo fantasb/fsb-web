@@ -13,13 +13,21 @@
 
 	{
 		"key": "search",
-		"path": "/search/:query",
+		"path": "/search/:role/:region",
 		"controller": "home",
 		"action": "index",
 		"template": "home/home-page",
 		"scripts": [
 			"main-search"
 		]
+	},
+
+	{
+		"key": "search",
+		"path": "/listing",
+		"controller": "listings",
+		"action": "index",
+		"template": "listings/role-region"
 	},
 
 	{

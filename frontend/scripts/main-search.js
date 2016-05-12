@@ -14,6 +14,8 @@ function Search($cont){
 		,results: $cont.find('div.search-results')
 		,controls: $cont.find('div.search-controls')
 	};
+	z.$.roleOptions = z.$.controls.find('div.search-control-role select');
+	z.$.locationOptions = z.$.controls.find('div.search-control-location select');
 
 	z.functionalize();
 }
@@ -26,10 +28,12 @@ Search.prototype.functionalize = function(){
 Search.prototype.initControls = function(){
 	var z = this;
 	// #DEMO main-home search functionality
-	z.$.controls.find('div.search-control-role select').bind('change',function(){
-		var v = $(this).val();
-		if (v) {
-			window.location = '/search/'+v;
+	z.$.roleOptions.add(z.$.locationOptions).bind('change',function(){
+		var role = z.$.roleOptions.val()
+			,loc = z.$.locationOptions.val()
+			,url = '/search/'+role+'/'+loc
+		if (role && loc && url != window.location.pathname) {
+			window.location = url;
 		}
 	});
 }
