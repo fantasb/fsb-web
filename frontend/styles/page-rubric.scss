@@ -14,4 +14,20 @@
 			margin-bottom: #{$whitespaceVertical2 * 2};
 		}
 	}
+
+	@media (min-width: $contentMaxWidth) { // so when the page stops expanding, the text stops getting bigger
+		.rubric-infographic-factor-weight-pretitle {
+			font-size: 19px;
+		}
+		.rubric-infographic-factor-weight-value {
+			font-size: 50px;
+		}
+		.rubric-infographic-factor-desc-name {
+			font-size: 17px;
+		}
+		.rubric-infographic-factor-desc-details {
+			font-size: 13px;
+		}
+	}
+
 }
