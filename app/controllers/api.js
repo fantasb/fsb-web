@@ -31,6 +31,26 @@ module.exports = {
 		});
 	}
 
+	,slackSignup: function(req,res){
+		// #DEMO
+		var data = collectPostData(req);
+
+		if (!(data.first_name && data.email)) {
+			return error(101,'Missing Input',req,res);
+		}
+
+		// @todo: write to db
+		// @todo: send notif to slack?
+
+		require('../helpers/send_email.js')('wyd-community@ranktt.com', 'Slack - Request For Invite', JSON.stringify(data), function(err,data){
+			if (err) {
+				console.log('ERROR',err);
+				return error(120,'Error sending email',req,res);
+			}
+			success({},req,res);
+		});
+	}
+
 }
 
 // BEGIN for #DEMO api calls

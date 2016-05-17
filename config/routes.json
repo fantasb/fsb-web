@@ -55,11 +55,24 @@
 	},
 
 	{
+		"key": "slack-community",
+		"path": "/slack-community",
+		"controller": "home",
+		"action": "slackCommunity",
+		"template": "home/slack-community",
+		"scripts": [
+			"main-slack-signup"
+		]
+	},
+
+
+	{
 		"key": "search-results-partial",
 		"path": "/search-results-partial",
 		"controller": "home",
 		"action": "searchResultsPartial"
 	},
+
 
 	{
 		"key": "api-contact-candidate",
@@ -67,6 +80,19 @@
 		"method": "post",
 		"controller": "api",
 		"action": "contactCandidate",
+		"middleware": [
+			"raw-body"
+		],
+		"noCharacterCaseRedirect": true,
+		"noTrailingSlashRedirect": true
+	},
+
+	{
+		"key": "slack-signup",
+		"path": "/api/slack-signup",
+		"method": "post",
+		"controller": "api",
+		"action": "slackSignup",
 		"middleware": [
 			"raw-body"
 		],

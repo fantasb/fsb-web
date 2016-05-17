@@ -140,6 +140,16 @@ module.exports = {
 		res.render(res.locals.template, viewData);
 	}
 
+	,slackCommunity: function(req,res){
+		var viewData = {
+			title: 'Slack Community'
+			,title0: ''
+			,title1: 'WYD Community'
+			,title2: 'Join us on Slack!'
+		};
+		res.render(res.locals.template, viewData);
+	}
+
 	,demo: function(req,res){
 		var z = this, viewData = {};
 		res.render('sup', viewData);

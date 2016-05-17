@@ -151,7 +151,7 @@ var Connect = AceBase.extend({
 	}
 	,showSuccess: function(){
 		var z = this;
-		z.$.cont.find('div.results-contact-inlay-wrap').html('<div class="results-contact-inlay-status">Message Sent!</div>');
+		z.$.cont.find('div.results-contact-inlay-wrap').html('<div class="results-contact-inlay-status">Message Sent! We\'ll send you an invite shortly!</div>');
 	}
 	,submit: function(){
 		var z = this, data;
