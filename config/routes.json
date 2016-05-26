@@ -55,6 +55,22 @@
 	},
 
 	{
+		"key": "terms-of-use",
+		"path": "/terms-of-use",
+		"controller": "home",
+		"action": "termsOfUse",
+		"template": "legal/terms-of-use"
+	},
+
+	{
+		"key": "copyright-infringement",
+		"path": "/copyright-infringement",
+		"controller": "home",
+		"action": "copyrightInfringement",
+		"template": "legal/copyright-infringement"
+	},
+
+	{
 		"key": "slack-community",
 		"path": "/slack-community",
 		"controller": "home",

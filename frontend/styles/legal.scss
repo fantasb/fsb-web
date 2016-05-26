@@ -1,3 +1,43 @@
 .legal {
 	margin-top: $whitespaceVertical1;
+	h1 {
+		margin-bottom: 0.5em;
+	}
+	.legal-subheader {
+		margin-bottom: 1em;
+	}
+	.sec {
+		margin-bottom: 2em;
+	}
+	h2 {
+		margin-bottom: 0.5em;
+	}
+	h3 {
+		margin-bottom: 0.5em;
+	}
+	p {
+		margin-bottom: 1em;
+	}
+	ul,ol {
+		li {
+			margin-left: 1em;
+		}
+	}
+	em {
+		// consider underlining like in original copy from lawyer?
+	}
+	a {
+		@extend .visible-link;
+	}
+
+	.tos-subsec-number {
+		margin-right: 0.4em;
+	}
+	.tos-subsec-title {
+		margin-right: 0.4em;
+		text-decoration: underline;
+	}
+	ul.legal-selfnumbered, ol.legal-selfnumbered {
+		list-style: none;
+	}
 }

@@ -140,6 +140,20 @@ module.exports = {
 		res.render(res.locals.template, viewData);
 	}
 
+	,termsOfUse: function(req,res){
+		var viewData = {
+			title: 'Terms Of Use'
+		};
+		res.render(res.locals.template, viewData);
+	}
+
+	,copyrightInfringement: function(req,res){
+		var viewData = {
+			title: 'Copyright Infringement Claims Procedure'
+		};
+		res.render(res.locals.template, viewData);
+	}
+
 	,slackCommunity: function(req,res){
 		var viewData = {
 			title: 'Slack Community'
