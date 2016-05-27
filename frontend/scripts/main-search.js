@@ -19,11 +19,15 @@ function Search($cont){
 
 	z.functionalize();
 }
+Search.prototype.opts = {
+	brokenProfImgReplacement: '/images/profilephoto-default-01.png'
+}
 Search.prototype.functionalize = function(){
 	var z = this;
 	z.initControls();
 	z.initViewMore();
 	z.initConnect();
+	z.fixBrokenImages();
 }
 Search.prototype.initControls = function(){
 	var z = this;
@@ -70,7 +74,9 @@ Search.prototype.initViewMore = function(){
 					z.$.results.append('<div class="search-results-error">There was an error fetching results :(</div>');
 					return console.log('ERROR', 'fetching more results', res);
 				}
-				z.$.results.append(res.responseText);
+				var $newResults = $(res.responseText)
+				z.fixBrokenImages($newResults)
+				z.$.results.append($newResults);
 			}
 		});
 	});
@@ -106,6 +112,20 @@ Search.prototype.hideConnect = function(id){
 	if (!z.$connectInlays[id]) return;
 	z.$connectInlays[id].$.cont.remove();
 	delete z.$connectInlays[id];
+}
+Search.prototype.fixBrokenImages = function($cont){
+	// @todo: create $.fn.onFirstImgError, which binds to each individual img instead of waiting for all of them to load before checking
+	var z = this, $imgs
+	if (!$cont) $cont = z.$.results
+	$imgs = $cont.find('.search-result-pic >img').imagesLoaded(function(){
+		$imgs.each(function(){
+			if (this.naturalWidth === 0)  {
+				var $img = $(this)
+				$img.attr('x-broken-url',$img.attr('src')).attr('src',z.opts.brokenProfImgReplacement)
+				// @todo: notify backend this is broke #stub
+			}
+		})
+	})
 }
 
 
