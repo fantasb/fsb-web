@@ -81,6 +81,22 @@
 		]
 	},
 
+	{
+		"key": "wyd",
+		"path": "/wyd",
+		"controller": "wyd",
+		"action": "index",
+		"template": "wyd/drive-links"
+	},
+
+
+	{
+		"key": "robots",
+		"path": "/robots.txt",
+		"controller": "system",
+		"action": "robots"
+	},
+
 
 	{
 		"key": "search-results-partial",
