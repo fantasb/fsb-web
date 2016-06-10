@@ -9,7 +9,7 @@ module.exports = {
 	index: function(req,res){
 		var z = this
 		,roleName = req.params.role || 'ios-developer'
-		,pagLimit = 5
+		,pagLimit = 10
 		,viewData = {
 			title: config.siteName+' - Find Trusted Talent'
 			,appendBrandToTitleTag: false
